@@ -1,0 +1,119 @@
+*{
+ margin: 0px;
+ padding: 0px;
+}
+h2, h3, h4 {
+  color: #990000;
+}
+h2 {
+  margin-bottom: 20px;
+}
+h3, h4, p, hr{
+  margin-bottom: 15px;
+}
+h1 {
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  font-family: 'Exo 2', sans-serif;
+}
+.wrapper {
+  width: 970px;
+  height: auto;
+}
+.header {
+  height: 100px;
+  background-color: maroon;
+  margin-bottom: 50px;
+  padding-top: 5px;
+}
+.header.logo img {
+  display: inline-block;
+  /*background-image: url(logo.png);*/
+}
+.logo {
+  display: inline-block;
+  width: 575px;
+}
+.corner-nav {
+  width: 375px;
+  display: inline-block;
+  text-align: right;
+}
+.small-nav ul {
+  list-style: none;
+  display: inline-block;
+}
+.small-nav li{
+  display: inline-block
+}
+.small-nav a {
+  color: orange;
+}
+.small-nav ul:first-child {
+  color: white;
+}
+.small-nav ul:third-child {
+  color: white;
+}
+.small-nav ul:fifth-child,
+.small-nav ul:last-child {
+  border-left: 1px solid white;
+}
+.bottom-nav {
+  height: 35px;
+  background-color: lightgrey;
+  display: block;
+  vertical-align: bottom;
+}
+.bottom-nav li {
+  list-style: none;
+  display: inline-block;
+  color: darkgrey;
+  border-left: 1px solid darkgrey;
+  padding-left: 10px;
+  padding-right: -10px;
+  margin: 10px 10px;
+
+}
+.side-nav {
+  list-style: none;
+  margin-left: 50px;
+  background-color: lightgray;
+  display: inline-block;
+  width: 150px;
+}
+.side-nav li {
+  list-style: none;
+}
+.side-nav li a {
+  color: #990000;
+}
+.main-content {
+  width: 600px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 50px;
+}
+.main-content a{
+  color: #990000;
+}
+.contents-table ul {
+  margin-bottom: 15px;
+  padding-left: 40px;
+}
+.contents-table li{
+  list-style: none;
+}
+.news {
+  padding-bottom: 15px;
+}
+ul.news {
+  padding-left: 40px;
+}
+.faqs {
+  padding-bottom: 15px;
+}
+ol.faqs {
+  padding-left: 40px;
+}
