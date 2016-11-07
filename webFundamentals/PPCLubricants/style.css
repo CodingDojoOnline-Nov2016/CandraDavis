@@ -72,12 +72,13 @@ nav ul {
 nav ul:last-child {
   border-right: 1px solid lightgray;
 }
-.main {
+div.main {
   background-color: black;
   padding: 15px 30px;
+  border-bottom: 0px;
 
 }
-.main img {
+div.main img {
   background-color: white;
   padding: 4px;
   margin-right: 15px;
@@ -96,43 +97,50 @@ nav ul:last-child {
   width: 497px;
   vertical-align: top;
 }
-.about-ppc {
+div.about-ppc {
   display: inline-block;
   /*height: 299px;*/
   width: 507px;
   vertical-align: top;
 }
 
-.about-ppc h3{
+div.about-ppc h3{
   font-family: 'Open Sans', sans-serif;
   color: white;
   font-size: 14px;
   margin: 10px 0;
 }
-.about-ppc p {
+div.about-ppc p {
   font-family: 'Open Sans', sans-serif;
   color: white;
   font-size: 13px;
   margin-bottom: 10px;
 }
-.info {
+div.info {
   background-image: linear-gradient(
     to left, #2d2c29, #545351
     );
   padding: 10px 10px 10px 10px;
 }
-p.small {
-  color: #ffc628;
+div.img-gallery-wrapper {
   background-color: black;
-  vertical-align: 50% 50%;
-  margin: 10px 20px 10px 15px;
+  width: 1020px;
+  border-top: 0px;
+}
+div.small-message {
+  margin: 0px 20px 10px 15px;
+  background-color: black;
+}
+div.small-message p {
+  display: inline-block;
+  color: #ffc628;
+  vertical-align: middle;
   font-family: 'Open Sans', sans-serif;
   font-size: 10px;
 }
-img.small-logo {
+#small-logo {
   background-color: white;
-  width: 7%;
-  height: auto;
+  height: .55em;
   border-radius: 2px;
   /*display: inline-block;*/
 }
@@ -148,7 +156,7 @@ div.img-gallery {
   display: inline-block;
   width: 225px;
 }
-.img-gallery a {
+div.img-gallery a {
   text-decoration: none;
   color: black;
 }
