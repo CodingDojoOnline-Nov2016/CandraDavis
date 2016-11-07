@@ -1,0 +1,165 @@
+*{
+ margin: 0px;
+ padding: 0px;
+}
+.wrapper {
+  background-color: lightgray;
+  width: 1020px;
+  margin: auto;
+}
+h1, h2, h3, h4 {
+  font-family: 'Lato', sans-serif;
+}
+h2 {
+  font-size: 16px;
+  padding: 5px 0 5px 10px;
+}
+header,
+nav {
+  width: 1020px;
+  height: auto;
+}
+header {
+  background: #f0f0f0;
+  background: -moz-linear-gradient(top, #f0f0f0 0%, #f0f0f0 1%, #f7f7f7 39%, #ffffff 45%, #ffffff 65%, #e6e6e6 89%, #e6e6e6 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #f0f0f0), color-stop(1%, #f0f0f0), color-stop(39%, #f7f7f7), color-stop(45%, #ffffff), color-stop(65%, #ffffff), color-stop(89%, #e6e6e6), color-stop(100%, #e6e6e6));
+  background: -webkit-linear-gradient(top, #f0f0f0 0%, #f0f0f0 1%, #f7f7f7 39%, #ffffff 45%, #ffffff 65%, #e6e6e6 89%, #e6e6e6 100%);
+  background: -o-linear-gradient(top, #f0f0f0 0%, #f0f0f0 1%, #f7f7f7 39%, #ffffff 45%, #ffffff 65%, #e6e6e6 89%, #e6e6e6 100%);
+  background: -ms-linear-gradient(top, #f0f0f0 0%, #f0f0f0 1%, #f7f7f7 39%, #ffffff 45%, #ffffff 65%, #e6e6e6 89%, #e6e6e6 100%);
+  background: linear-gradient(to bottom, #f0f0f0 0%, #f0f0f0 1%, #f7f7f7 39%, #ffffff 45%, #ffffff 65%, #e6e6e6 89%, #e6e6e6 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#e6e6e6', GradientType=0 );
+}
+nav {
+  border-top: 1px solid darkgrey;
+  background: #f2f2f2;
+  background: -moz-linear-gradient(top, #f2f2f2 0%, #f2f2f2 2%, #ebebeb 40%, #e0e0e0 54%, #ffffff 97%, #ffffff 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #f2f2f2), color-stop(2%, #f2f2f2), color-stop(40%, #ebebeb), color-stop(54%, #e0e0e0), color-stop(97%, #ffffff), color-stop(100%, #ffffff));
+  background: -webkit-linear-gradient(top, #f2f2f2 0%, #f2f2f2 2%, #ebebeb 40%, #e0e0e0 54%, #ffffff 97%, #ffffff 100%);
+  background: -o-linear-gradient(top, #f2f2f2 0%, #f2f2f2 2%, #ebebeb 40%, #e0e0e0 54%, #ffffff 97%, #ffffff 100%);
+  background: -ms-linear-gradient(top, #f2f2f2 0%, #f2f2f2 2%, #ebebeb 40%, #e0e0e0 54%, #ffffff 97%, #ffffff 100%);
+  background: linear-gradient(to bottom, #f2f2f2 0%, #f2f2f2 2%, #ebebeb 40%, #e0e0e0 54%, #ffffff 97%, #ffffff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff', GradientType=0 );
+}
+header img {
+  display: inline-block;
+  margin-right: 30px;
+}
+header h1 {
+  display: inline-block;
+  color: #1d1e1e;
+  font-size: 24px;
+  text-align: right;
+  vertical-align: top;
+  padding-top: 25px;
+  margin-left: 200px;
+}
+nav li  {
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+  border-left: 1px solid lightgray;
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+}
+nav li a {
+  text-decoration: none;
+  color: #3a3a38;
+  font-size: 12px;
+}
+nav ul {
+  padding-left: 70px;
+}
+nav ul:last-child {
+  border-right: 1px solid lightgray;
+}
+.main {
+  background-color: black;
+  padding: 15px 30px;
+
+}
+.main img {
+  background-color: white;
+  padding: 4px;
+  margin-right: 15px;
+  height: 287px;
+}
+/*#h2-about {
+  background-color: #ffc628;
+  display: inline-block;
+  vertical-align: top;
+  width: 520px;
+}*/
+#h2-about {
+  background-color: #ffc628;
+  margin-bottom: 0;
+  display: inline-block;
+  width: 497px;
+  vertical-align: top;
+}
+.about-ppc {
+  display: inline-block;
+  /*height: 299px;*/
+  width: 507px;
+  vertical-align: top;
+}
+
+.about-ppc h3{
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 14px;
+  margin: 10px 0;
+}
+.about-ppc p {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.info {
+  background-image: linear-gradient(
+    to left, #2d2c29, #545351
+    );
+  padding: 10px 10px 10px 10px;
+}
+p.small {
+  color: #ffc628;
+  background-color: black;
+  vertical-align: 50% 50%;
+  margin: 10px 20px 10px 15px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+}
+img.small-logo {
+  background-color: white;
+  width: 7%;
+  height: auto;
+  border-radius: 2px;
+  /*display: inline-block;*/
+}
+
+h2.img-gallery-header {
+  background-color: #ffc628;
+  display: inline-block;
+  margin-bottom: 0;
+  text-decoration: none;
+  width: 198px;
+}
+.img-gallery {
+  display: inline-block;
+  width: 225px;
+}
+.img-gallery a {
+  text-decoration: none;
+  color: black;
+}
+div.img img {
+  height: auto;
+  border-color: black;
+  /*overflow: hidden;*/
+}
+div.desc {
+  display: inline-block;
+  padding: 15px;
+  text-align: center;
+  background-color: white;
+}
