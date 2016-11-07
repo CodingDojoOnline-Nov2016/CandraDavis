@@ -56,8 +56,8 @@ h1 {
 .small-nav ul:third-child {
   color: white;
 }
-.small-nav ul:fifth-child,
-.small-nav ul:last-child {
+.small-nav a:fifth-child,
+.small-nav a:last-child {
   border-left: 1px solid white;
 }
 .bottom-nav {
@@ -74,7 +74,10 @@ h1 {
   padding-left: 10px;
   padding-right: -10px;
   margin: 10px 10px;
-
+}
+.bottom-nav a {
+  text-decoration: none;
+  color: #595d63;
 }
 .side-nav {
   list-style: none;
@@ -93,7 +96,7 @@ h1 {
   width: 600px;
   display: inline-block;
   vertical-align: top;
-  margin-right: 50px;
+  margin-left: 50px;
 }
 .main-content a{
   color: #990000;
