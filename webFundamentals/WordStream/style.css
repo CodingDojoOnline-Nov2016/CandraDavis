@@ -7,12 +7,12 @@ body.container {
   margin: auto;
   background-color: #fff;
 }
-nav {
-  background: white; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#cdcdcd, #fff); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#cdcdcd, #fff); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#cdcdcd, #fff); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#cdcdcd, #fff); /* Standard syntax */
+nav ul {
+  background: #fff; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#fff, #fafafa); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#fff, #fafafa); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#fff, #fafafa); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#fff, #fafafa); /* Standard syntax */
   text-align: right;
 }
 nav ul {
@@ -24,10 +24,25 @@ nav li {
   margin: 10px 5px;
   padding-right: 10px;
   border-right: 1px solid #7d7d7f;
+  font-family: 'Raleway', sans-serif;
 }
 nav a {
   text-decoration: none;
   color: #7d7d7f;
+}
+nav li button {
+  display: inline-block;
+  width: 80px;
+  height: 25px;
+  color: #fff;
+  background: #017cb8; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#017cb8, #22a2df); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#017cb8, #22a2df); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#017cb8, #22a2df); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#017cb8, #22a2df); /* Standard syntax */
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
 }
 header{
   margin-bottom: 10px;
@@ -40,14 +55,17 @@ h1 {
   display: inline-block;
   color: #007fac;
   margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 h1 span {
   color: #7d7d7f;
+  font-family: 'Roboto', sans-serif;
 }
 h2 {
   background-color: #017ebe;
   color: white;
   padding: 10px 0px 10px 10px;
+  font-family: 'Roboto', sans-serif;
 }
 div.side-nav {
   display: inline-block;
@@ -63,15 +81,18 @@ h3 {
   border-top: 50px;
   margin-bottom: 10px;
   display: inline-block;
+  font-family: 'Roboto', sans-serif;
 }
 h4.profits {
   color: #b14856;
   margin-bottom: 5px;
   display: inline-block;
+  font-family: 'Roboto', sans-serif;
 }
 p.desc {
   margin-bottom: 30px;
   display: inline-block;
+  font-family: 'Raleway', sans-serif;
 }
 
 a.p-link {
@@ -90,6 +111,7 @@ a.p-link {
   background: linear-gradient(#017cb8, #22a2df); /* Standard syntax */
   border-radius: 5px;
   margin-bottom: 3px;
+  font-family: 'Roboto', sans-serif;
 }
 #trial{
   display: inline-block;;
@@ -103,6 +125,7 @@ a.p-link {
   background: linear-gradient(#e6a15e, #e54201); /* Standard syntax */
   border-radius: 5px;
   margin-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 p.credit {
   /*display: inline-block;*/
@@ -110,6 +133,7 @@ p.credit {
   font-size: 13px;
   padding-bottom: 10px;
   border-bottom: 1px solid #cdcdcd;
+  font-family: 'Raleway', sans-serif;
 }
 div.get-graded {
   display: inline-block;
@@ -125,10 +149,12 @@ p.question span {
   font-weight: bold;
   font-size: 20px;
   color: #3c64a1;
+  font-family: 'Raleway', sans-serif;
 }
 p.get-graded {
   margin: 15px 0px;
   font-size: 14px;
+  font-family: 'Raleway', sans-serif;
 }
 .get-graded button {
   background-color: #1b70a9;
@@ -138,6 +164,7 @@ p.get-graded {
   width: 125px;
   border-radius: 5px;
   margin-left: 30px;
+  font-family: 'Roboto', sans-serif;
 }
 div.main {
   display: inline-block;
@@ -146,11 +173,11 @@ div.main {
 }
 div.home-contact {
   display: inline-block;
-  width: 665px;
+  width: 700px;
 }
 
 div.home-left {
-  width: 420px;
+  width: 480px;
   vertical-align: top;
   display: inline-block;
 }
@@ -159,7 +186,8 @@ h4.main {
   display: inline-block;
   margin-bottom: 5px;
   vertical-align: middle;
-  margin-right: 275px;
+  margin-right: 338px;
+  font-family: 'Roboto', sans-serif;
 }
 img.home-icon {
   vertical-align: middle;
@@ -181,6 +209,8 @@ h5.hours,
 h1.phone,
 h5.phone {
   display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
 }
 h1.phone {
   margin-bottom: 0;
@@ -202,19 +232,22 @@ h3.info {
   padding-top: 20px;
   border-top: 1px solid #cdcdcd;
   width: 650px;
+  font-family: 'Roboto', sans-serif;
 }
 p.info-2 {
   margin-top: 15px;
-  /*width: 650px;*/
+  font-family: 'Raleway', sans-serif;
 }
 ul.info {
   margin-left: 30px;
   margin-top: 15px;
 }
 ul.info li {
+  font-family: 'Raleway', sans-serif;
   padding-bottom: 5px;
 }
 ul.info li span {
+  font-family: 'Raleway', sans-serif;
   font-weight: bold;
 }
 div.get-started {
@@ -231,7 +264,7 @@ img.get-started {
   /*align-self: top;*/
 }
 div.drive-profits,
-h4.get-started,
+h3.get-started,
 p.get-started {
   display: inline-block;
 }
@@ -239,9 +272,14 @@ h3.get-started {
   color: #226e9f;
   margin-bottom: 10px;
   width: 505px;
+  font-family: 'Roboto', sans-serif;
+}
+p.get-started {
+  font-family: 'Raleway', sans-serif;
 }
 p.get-started span {
   font-weight: bold;
+  font-family: 'Raleway', sans-serif;
 }
 div.drive-profits {
   width: 505px;
@@ -261,6 +299,7 @@ div.drive-profits {
   margin-bottom: 5px;
   font-size: 16px;
   margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 div.automation{
   margin-left: 20px;
@@ -268,6 +307,10 @@ div.automation{
 h4.automation {
   color: #226e9f;
   margin: 20px 0px 10px 0px;
+  font-family: 'Roboto', sans-serif;
+}
+p.automation {
+  font-family: 'Roboto', sans-serif;
 }
 /*i.ion-ios-arrow-right.small1 {
   height: 15px;
