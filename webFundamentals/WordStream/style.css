@@ -70,7 +70,7 @@ h2 {
 div.side-nav {
   display: inline-block;
   width:200px;
-  margin-top: 80px;
+  margin-top: 100px;
 }
 div.demo-section {
   display: inline;
@@ -110,8 +110,10 @@ a.p-link {
   background: -moz-linear-gradient(#017cb8, #22a2df); /* For Firefox 3.6 to 15 */
   background: linear-gradient(#017cb8, #22a2df); /* Standard syntax */
   border-radius: 5px;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
 #trial{
   display: inline-block;;
@@ -126,12 +128,14 @@ a.p-link {
   border-radius: 5px;
   margin-bottom: 5px;
   font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
 p.credit {
   /*display: inline-block;*/
   text-align: center;
   font-size: 13px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   border-bottom: 1px solid #cdcdcd;
   font-family: 'Raleway', sans-serif;
 }
@@ -142,7 +146,7 @@ div.get-graded {
   background-repeat: no-repeat;
   height: 300px;
   padding: 15px 10px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 p.question span {
   display: inline-block;
@@ -185,12 +189,14 @@ h4.main {
   color: #007fac;
   display: inline-block;
   margin-bottom: 5px;
-  vertical-align: middle;
+  vertical-align: top;
   margin-right: 338px;
   font-family: 'Roboto', sans-serif;
+  padding-bottom: 10px;
+  padding-top: 3px;
 }
 img.home-icon {
-  vertical-align: middle;
+  vertical-align: top;
   margin-bottom: -10px;
   margin-left: 30px;
 }
@@ -229,7 +235,7 @@ div.info {
 h3.info {
   color: #226e9f;
   background-color: #fff;
-  padding-top: 20px;
+  padding-top: 15px;
   border-top: 1px solid #cdcdcd;
   width: 650px;
   font-family: 'Roboto', sans-serif;
