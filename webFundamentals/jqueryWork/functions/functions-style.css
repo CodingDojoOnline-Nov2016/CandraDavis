@@ -23,3 +23,22 @@ button {
   width: 80px;
   height: 25px;
 }
+
+#check1 {
+  margin-left: 30px;
+}
+#peerThrough {
+  width: 200px;
+}
+.s1,
+.s2,
+.s3 {
+  display: none;
+}
+#hideMe {
+  color: indigo;
+}
+#puppers {
+  display: none;
+  width: 100px;
+}
