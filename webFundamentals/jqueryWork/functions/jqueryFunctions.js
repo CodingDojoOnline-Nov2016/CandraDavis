@@ -91,5 +91,9 @@ $(document).ready(function(){
    }, function() {
    alert('I did not think it was possible to be toggled');
 });
+$('#valBtn').click(function() {
+  var nameChange = $('#valBtn').val('Whose your momma?!');
+    return nameChange;
+});
 
 });
