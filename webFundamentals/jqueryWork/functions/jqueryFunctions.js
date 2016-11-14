@@ -1,5 +1,11 @@
 $(document).ready(function(){
   console.log('jquery is ready!');
+//I'm noticing that you're creating a variable and returning each function. This will work for many of them but
+//it's unnecessary and may lead to confusion about how things are actually working.
+
+//Try removing the variable declaration and the return statement from your .after function for example.
+//Under the hood, the .after function in the library already returns the value to js, so you're just doing extra work.
+
   $('#aC').click(function() {
     var addTop = $('p#add-class').css('background', 'coral').addClass('selected');
       return addTop;
@@ -15,13 +21,20 @@ $(document).ready(function(){
       return addAfter;
   });
 // not working for me right now
+
+//This function only returns a value for the FIRST element in the set you're looking to access.
+//This means that it will only ever output "yes"
   $('#attribute').click(function() {
-    var anAttribute = $('#check1').attr('checked');
+    var anAttribute = $('input').attr('value');
+      $("#attrP").before(anAttribute);
       return anAttribute;
   });
 // image is not loading, just the text
+
+//Here you're just passing a string, and it will input anything you pass through exactly how it's written.
+//Refer to your .after and .insert functions.
   $('#b4').click(function() {
-    var aImg = $('#aboveThis').before('url(peer_through.jpeg)');
+    var aImg = $('#aboveThis').before('<img src="peer_through.jpeg"/>');
       return aImg;
   });
 
@@ -30,9 +43,17 @@ $(document).ready(function(){
       return colorMe;
   });
 // not sure how to use this at all!
+
+//This is a strange one. It's meant to be used for things that we haven't learned about in class yet.
+//The idea is that you can assign useless data to any element and call that data back later.
+//First, you need to set the element's data to something, then you need to get it and display it.
+//When you want to get the data, you need to access it by its key. Which is the left side of the : in an object.
+    //example... {"key" : "value"}
+//However, the API documentation for setting reads like this .data(key, value). So $("body").data("my-name", "aValue")
+//is the proper way to set a key value pair. ({"my-name": "aValue"}) is setting {"my-name": "aValue"} as a valueless key
   $('#addData').click(function() {
-    var dataAdd = $( "body" ).data( { "my-name": "aValue" } ).data();
-      return dataAdd;
+    $( "body" ).data("my-name", "aValue");
+    $("#dataP").before($( "body" ).data("my-name"));
   });
 
   $('#fade-in').click(function() {
