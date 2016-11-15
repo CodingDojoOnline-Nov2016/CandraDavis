@@ -1,48 +1,41 @@
 $(document).ready(function(){
   console.log('jquery is ready!');
   $('#aC').click(function() {
-    var addTop = $('p#add-class').css('background', 'coral').addClass('selected');
-      return addTop;
+    $('p#add-class').css('background', 'coral').addClass('selected');
   });
 
   $('#after').click(function() {
-    var addAfter = $('p#add-after').after('<h2>I am getting the hang of this!</h2>').css('color', 'red');
-      return addAfter;
+    $('p#add-after').after('<h2>I am getting the hang of this!</h2>').css('color', 'red');
   });
 
   $('#insert').click(function() {
-    var addAfter = $('p#insert-content').append('<p><strong>What are <i>you<i> doing?!</strong></p>').css('color', 'darkviolet');
-      return addAfter;
+    $('p#insert-content').append('<p><strong>What are <i>you<i> doing?!</strong></p>').css('color', 'darkviolet');
   });
-// not working for me right now
+
   $('#attribute').click(function() {
-    var anAttribute = $('#check1').attr('checked');
-      return anAttribute;
+     $('#check1').attr('checked','checked');
   });
 // image is not loading, just the text
   $('#b4').click(function() {
-    var aImg = $('#aboveThis').before('url(peer_through.jpeg)');
+    var aImg = $('#aboveThis').before('<img src="peer_through.jpeg" width="100px"/>');
       return aImg;
   });
 
   $('#onClick').click(function() {
-    var colorMe = $('#colorMeBad').css('background-color', 'hotpink');
-      return colorMe;
+    $('#colorMeBad').css('background-color', 'hotpink');
   });
 // not sure how to use this at all!
   $('#addData').click(function() {
-    var dataAdd = $( "body" ).data( { "my-name": "aValue" } ).data();
-      return dataAdd;
+    $('.dataAdd').data('Davis', 35 );
+    $('.dataAdd').after($('.dataAdd').data('Davis'));
   });
 
   $('#fade-in').click(function() {
-     var fadeInImg = $('#peerThrough').fadeIn('slow');
-      return fadeInImg;
+     $('#peerThrough').fadeIn('slow');
   });
 
   $('#fade-out').click(function() {
-    var fadeOutImg = $('#peerThrough').fadeOut('slow');
-      return fadeOutImg;
+    $('#peerThrough').fadeOut('slow');
   });
 
   $('#radial1').focus(function() {
@@ -82,18 +75,14 @@ $(document).ready(function(){
   });
 
   $('#textChange').click(function() {
-     var changeText = $('#textMe').text('You know, I am always changing my mind. Does this p look good on me?').css('color', 'teal');
-      return changeText;
+     $('#textMe').text('You know, I am always changing my mind. Does this p look good on me?').css('color', 'teal');
   });
 // not showing first toggle alert message
   $('#toggled').click(function() {
-     alert('My mind is Toggled!');
-   }, function() {
-   alert('I did not think it was possible to be toggled');
+    $('p').toggle();
 });
 $('#valBtn').click(function() {
-  var nameChange = $('#valBtn').val('Whose your momma?!');
-    return nameChange;
+  $('#valBtn').val('Whose your momma?!');
 });
 
 });
