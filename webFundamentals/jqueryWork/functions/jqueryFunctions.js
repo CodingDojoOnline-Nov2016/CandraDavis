@@ -15,7 +15,6 @@ $(document).ready(function(){
   $('#attribute').click(function() {
      $('#check1').attr('checked','checked');
   });
-// image is not loading, just the text
   $('#b4').click(function() {
     var aImg = $('#aboveThis').before('<img src="peer_through.jpeg" width="100px"/>');
       return aImg;
@@ -24,7 +23,7 @@ $(document).ready(function(){
   $('#onClick').click(function() {
     $('#colorMeBad').css('background-color', 'hotpink');
   });
-// not sure how to use this at all!
+  
   $('#addData').click(function() {
     $('.dataAdd').data('Davis', 35 );
     $('.dataAdd').after($('.dataAdd').data('Davis'));
