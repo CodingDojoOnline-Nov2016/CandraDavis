@@ -16,23 +16,23 @@ img.head {
 h1 {
   display: inline-block;
 }
-div.img-gallery {
+/*div.img-gallery {
   display: inline-block;
-}
-.img-gallery {
-  margin-left: 175px;
-}
+}*/
+/*.img-gallery {
+  margin-left: 100px;
+}*/
 .img-gallery img {
   width: 130px;
   height: 130px;
   margin: 5px;
   border: 3px solid black;
 }
-.img-gallery.blue img {
+img.blue {
   background-color: #71a4f7;
   padding: 15px;
 }
-.img-gallery.red img{
+img.red{
   background-color: #f77b67;
   padding: 15px;
 }
