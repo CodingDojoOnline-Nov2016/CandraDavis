@@ -1,4 +1,4 @@
-function whatDoYouKnow(word) {
-  console.log("Look out, " + word + " !");
+function whatDoYouKnow(incoming) {
+  console.log(incoming);
 }
-whatDoYouKnow(incoming);
+// whatDoYouKnow(incoming);
