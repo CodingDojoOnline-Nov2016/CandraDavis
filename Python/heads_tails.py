@@ -1,15 +1,14 @@
 # You're going to create a program that simulates tossing a coin 5,000 times. Your program should display how many times the head/tail appears.
 def create_random_numbers():
-    i = 1
-    while i <= 5000:
+    for count in range(0, 5):
         import random
-        toss_list = []
         random_num = random.random()
+        toss_list = []
         toss_list.append(random_num)
-        i +=1
     print toss_list
+
     # return toss_list
-# print create_random_numbers()
+print create_random_numbers()
 
 # heads_tails_list = create_random_numbers()
 # def coin_toss():
