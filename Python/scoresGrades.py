@@ -7,18 +7,20 @@
 
 
 def scoresGrades():
-    for i in range(0, 10):
-        userScore = raw_input('What is your score?')
-        return userScore
-        if userScore in range(60, 70):
-                print "Score: " + userScore + "; Your grade is D."
+    for i in range(0, 10, 1):
+        userScore = input('What is your score?')
+        if userScore in range(0, 60):
+            print "Score: " + str(userScore) + "; Your grade is F. You didn't study!"
+        elif userScore in range(60, 70):
+            print "Score: " + str(userScore) + "; Your grade is D."
         elif userScore in range(70, 80):
-                print "Score: " + userScore + "; Your grade is C."
+            print "Score: " + str(userScore) + "; Your grade is C."
         elif userScore in range(80, 90):
-                print "Score: " + userScore + "; Your grade is B."
+            print "Score: " + str(userScore) + "; Your grade is B."
         else:
-                print "Score: " + userScore + "; Your grade is A."
+            print "Score: " + str(userScore) + "; Your grade is A."
     else:
         print "End of program. Bye!"
 
 scoresGrades()
+        # return userScore
