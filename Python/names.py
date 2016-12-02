@@ -48,5 +48,16 @@ users = {
   ]
  }
 def students_instructors(dict):
-    for key in dict:
-        print key
+    # for title in dict:
+    #     print title
+        for title, data_list in users.items():
+            print title
+            for key in enumerate(data_list):
+                print key[1]
+                for first_name, last_name in key[1].items():
+                    first_name1 = first_name
+                    last_name1 = last_name
+                    print first_name, last_name
+
+            # for name, val in
+students_instructors(users)
