@@ -1,4 +1,4 @@
 function whatDoYouKnow(incoming) {
   console.log(incoming);
 }
-// whatDoYouKnow(incoming);
+whatDoYouKnow('Joe!');
