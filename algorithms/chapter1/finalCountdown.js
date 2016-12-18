@@ -1,9 +1,9 @@
 function finalCountdown(multiple, start, limit, exception){
   while (start < limit){
-    multiple++;
-    if (multiple = exception) {
-      continue;
-    }
+    multiple += multiple;
+    // if (multiple = exception) {
+    //   continue;
+    // }
     console.log(multiple);
   }
 }
