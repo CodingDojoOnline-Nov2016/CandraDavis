@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Email List</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+      {% with messages = get_flashed_messages()%}
+      {% if messages %}
+      <div class="success" id='success-box'>
+        {% for message in messages %}
+          <p class='msg'>{{ message }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+    {% endwith %}
+    <h1>Email Registry Index</h1>
+    <hr>
+    {% for email in email_list %}
+    <p>Email: {{ email.email}}</p>
+    <p>Created: {{ email.created_at }}</p>
+    <hr>
+    {% endfor %}
+
+    <form class="" action="/<email>" method="post">
+      <label for="email1">Input Email to Delete: <input type="email1" name="email" placeholder="Email to Delete"></label>
+      <input type="submit" name="delete" value="Delete Email">
+    </form>
+  </body>
+</html>

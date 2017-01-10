@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Full of Friends</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <style media="screen">
+      div.red{
+        background-color: red;
+        color: white;
+      }
+      div.green{
+        background-color: green;
+        color: white;
+      }
+      div{
+        height: 175px;
+        width: 200px;
+        padding: 30px 30px;
+      }
+      p{
+        font-size: 16px;
+        display: inline-block;
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Here's All my Friends</h1>
+    <hr>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </tr>
+      {% for friend in all_friends %}
+      <tr>
+        <td><a href="/friends/{{ friend.id }}/edit">{{ friend['id'] }}</a></td>
+        <td>{{ friend['first_name'] }}</td>
+        <td>{{ friend['last_name'] }}</td>
+        <td>{{ friend['email'] }}</td>
+        <td><form class="delete_id" action="/friends/{{friend.id}}/delete" method="post">
+          <input type="submit" name="delete_id" value="Delete">
+        </form></td>
+      </tr>
+      {% endfor %}
+    </table>
+      <hr>
+    <!-- {{ all_friends }} -->
+
+    {% with messages = get_flashed_messages()%}
+      {% if messages %}
+      <div class="{{ session['color'] }}">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+    {% endwith %}
+    <h5>Click ID to Edit Friend</h5>
+    <form class="add_friend" action="/friends" method="post">
+      <label for="first_name">First Name: <input type="text" name="first_name" placeholder="First Name"></label>
+      <label for="last_name">Last Name: <input type="text" name="last_name" placeholder="Last Name"></label>
+      <label for="email_address">Email: <input type="email" name="email_address" placeholder="fullname@example.net"></label>
+      <input type="submit" name="submit" value="Add Friend">
+    </form>
+    <!-- <form class="edit_friend" action="/friends/{{ id }}/edit" method="post">
+      <label for="idInput">Edit by ID: <input type="text" name="id_input" placeholder="id number"></label>
+      <input type="submit" name="submit" value="Submit">
+    </form> -->
+    <h5>Enter ID to Delete</h5>
+    
+    </form>
+  </body>
+</html>
