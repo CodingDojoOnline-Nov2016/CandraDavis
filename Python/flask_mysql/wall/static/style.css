@@ -1,0 +1,48 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+div.wrapper-login{
+  padding: 30px 50px;
+}
+header{
+  padding-left: 450px;
+}
+h5{
+  display: inline-block;
+  margin-right: 15px;
+}
+ul,
+form.login{
+  display: inline-block;
+}
+li{
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
+}
+form.create,
+h4.homepage,
+h4.comments{
+  margin-left: 60px;
+}
+header.homepage,
+header.coments{
+  padding: 15px;
+  background-color: lightblue;
+}
+div.wrapper{
+  padding: 30px 150px;
+}
+h2.homepage,
+ul.homepage,
+li.homepage,
+h2.comments,
+ul.comments,
+li.comments{
+  display: inline-block;
+}
+ul.homepage,
+ul.comments{
+  margin-left: 500px;
+}

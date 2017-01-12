@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    body{
+      padding: 20px 40%;
+    }
+      div.line,
+      div.line-date{
+        border: solid 4px black;
+        margin-bottom: 20px;
+        display: inline-block;
+        padding: 10px;
+        text-align: center;
+      }
+      div.line-date{
+        width: 300px;
+      }
+      /*p.time_at_load{
+        font-size: 32px;
+        font-weight: bold;
+        font-family: sans-serif;*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="line">
+      <p>The Current Date and Time:</p>
+    </div>
+    <div class="line-date"><span><span><h1 class="time_at_load">{{now.now}}</h1></span></span></div>
+  </body>
+</html>

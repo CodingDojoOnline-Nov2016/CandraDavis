@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Word Generator Assignment</title>
+  </head>
+  <body>
+    <p>Random Word (attempt # {{ request.session.count }})</p>
+    <div class="container random_word">
+      <p>{{ request.session.random_word }}</p>
+    </div>
+    <form class="generator" action="/gen_word" method="post">
+      {% csrf_token %}
+      <input type="submit" name="new_word" value="Generate New Word">
+    </form>
+  </body>
+</html>

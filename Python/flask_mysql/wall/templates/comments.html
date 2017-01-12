@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The Wall</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+  </head>
+  <body>
+    <header class='comments'>
+      <h2 class='comments'>Coding Dojo Wall</h2>
+      <ul class='comments'>
+        <li class='comments'>Welcome {{ name }}</li>
+        <li class='comments'><a href="/">Log Off</a></li>
+      </ul>
+    </header>
+      {% for message in one_message %}
+      <p>{{ message['first_name'] }} {{ message['last_name'] }} | {{ message['updated_at'] }}</p>
+      <p>{{ message['message'] }}</p>
+      {% endfor %}
+    <!-- the selected message should show here -->
+    {% for comment in all_comments %}
+      <div class="each-comment">
+        <p>{{ comment['first_name'] }} {{ comment['last_name'] }} | {{ comment['updated_at'] }}</p>
+        <p>{{ comment['text'] }}</p>
+      </div>
+    {% endfor %}
+    <div class="wrapper-comments">
+      <h4 class='comments'>Add Comment</h4>
+      <form class="msg_post" action="/wall/{{ id }}/comment" method="post">
+        <textarea name="post_comment" rows="50" cols="100"></textarea>
+        <input type="submit" name="submit" value="Post a message">
+      </form>
+      <a class='button button-primary' href="/wall/{{ session['user_id'] }}"> Back To Messages</a>
+    </div>
+
+  </body>
+</html>
