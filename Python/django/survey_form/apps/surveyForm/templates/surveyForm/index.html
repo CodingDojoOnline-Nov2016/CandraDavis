@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <style media="screen">
+      div.red{
+        background-color: red;
+      }
+      div.p{
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="red">
+          <p>{{ message }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+    <form class="survey" action="/results" method="post">
+      {% csrf_token %}
+      <label for="full_name">Your Name: <input type="text" name="full_name" placeholder="First Name Last Name"></label><br><br>
+      <label for="location">Dojo Location: <select name="location"></label>
+        <option value="chicago">Chicago, IL</option>
+        <option value="silicon-valley">Silicon Valley, CA</option>
+        <option value="seattle">Seattle, WA</option>
+        <option value="la">Los Angeles, CA</option>
+        <option value="dc">Washington, DC</option>
+        <option value="berkley">Berkley, CA</option>
+        <option value="orange-ca">Orange County, CA</option>
+      </select><br><br>
+      <label for="fav_lang">Favorite Language: <select class="" name="fav_lang">
+        <option value="python">Python</option>
+        <option value="js">JavaScript</option>
+        <option value="ruby">Ruby</option>
+        <option value="c">C# / C++</option>
+        <option value="java">Java</option>
+      </select></label><br><br>
+      <label for="comment">Comment: (optional) </label><br><br>
+        <textarea name="comment" rows="10" cols="50"></textarea>
+      <input type="submit" name="submit" value="Submit Survey">
+    </form>
+  </body>
+</html>
