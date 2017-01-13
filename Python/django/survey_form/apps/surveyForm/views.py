@@ -22,7 +22,7 @@ def create(request):
                 request.session['fav_lang'] = request.POST['fav_lang']
                 request.session['comment'] = request.POST['comment']
                 messages.success(request, 'Thanks for submitting this form!  You have submitted this form {}'.request.session['count'] + ' times now.')
-                return render(request, 'surveyForm/results.html')
+                return redirect(request, '/results')
     else:
-        # request.method == 'GET'
-        return redirect(request, '/')
+        request.method == 'GET'
+        return return(request, 'surveyForm/results.html')
