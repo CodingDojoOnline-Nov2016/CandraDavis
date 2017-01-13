@@ -21,7 +21,7 @@
         </div>
       {% endfor %}
     {% endif %}
-    <form class="survey" action="/results" method="post">
+    <form class="survey" action="/surveys/process" method="post">
       {% csrf_token %}
       <label for="full_name">Your Name: <input type="text" name="full_name" placeholder="First Name Last Name"></label><br><br>
       <label for="location">Dojo Location: <select name="location"></label>

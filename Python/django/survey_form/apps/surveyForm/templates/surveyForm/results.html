@@ -21,10 +21,10 @@
         </div>
       {% endfor %}
     {% endif %}
-    <h4>Name: <span><span>{{ request.session['name']}}</span></span></h4>
-    <h4>Location: <span><span>{{ request.session['name']}}</span></span></h4>
-    <h4>Favorite Language: <span><span>{{ request.session['fav_lang']}}</span></span></h4>
-    <h4>Comments: <span><span>{{ request.session['comment']}}</span></span></h4>
+    <h4>Name: <span><span>{{ name }}</span></span></h4>
+    <h4>Location: <span><span>{{ location }}</span></span></h4>
+    <h4>Favorite Language: <span><span>{{ fav_lang }}</span></span></h4>
+    <h4>Comments: <span><span>{{ comment }}</span></span></h4>
     <a class='button button-primary'href="/">Go Back</a>
   </body>
 </html>

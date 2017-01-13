@@ -5,13 +5,16 @@ app.secret_key = 'csdavis09'
 @app.route('/')
 def index():
     return render_template('index.html')
+
 @app.route('/find_ninja', methods=['POST'])
 def find_ninja():
     print request.form
     return redirect('/ninja')
+
 @app.route('/ninja')
 def all_ninjas():
     return render_template('ninja.html')
+
 @app.route('/ninja_select', methods=['POST'])
 def select_by_color():
     print request.form
@@ -26,6 +29,7 @@ def select_by_color():
     else:
         session['color'] = request.form['ninja_color']
         return redirect('/ninja/'+ request.form['ninja_color'])
+
 @app.route('/ninja/<ninja_color>')
 def show_which_ninja(ninja_color):
     if session['color'] == 'blue' or session['color'] == 'Blue':
@@ -38,6 +42,7 @@ def show_which_ninja(ninja_color):
         return render_template('ninja_color.html', ninja_color=ninja_color)
     else:
         return redirect('/401')
+        
 @app.route('/401')
 def not_april():
     return render_template('exception401.html')
