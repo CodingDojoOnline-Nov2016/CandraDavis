@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Here are the Ninja's</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'ninja_gone/img/'%}">
+  </head>
+  <body>
+    <h1>Here's the Gang!</h1>
+      {{ messages }}
+      {% for message in messages %}
+        {{ message }}
+        <img src="{% static 'ninja_gone/img/notapril.jpg' %}" alt="april">
+      {% endfor%}
+
+    <img src="{% static 'ninja_gone/img/donatello.jpg' %}" alt="donnatello">
+    <img src="{% static 'ninja_gone/img/leonardo.jpg' %}" alt="leonardo">
+    <img src="{% static 'ninja_gone/img/michelangelo.jpg' %}" alt="michelangelo">
+    <img src="{% static 'ninja_gone/img/raphael.jpg' %}" alt="raphael">
+
+    <form class="single_ninja" action="/ninjas/select" method="post">
+      {% csrf_token %}
+      <label for="pick_color">Please Enter a Color: <br><input type="text" name="pick_color" placeholder="Blue, Purple, Red or Orange"></label>
+      <input type="submit" name="submit" value="Pick Ninja!">
+    </form>
+
+  </body>
+</html>
