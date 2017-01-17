@@ -42,7 +42,6 @@ def show_which_ninja(ninja_color):
         return render_template('ninja_color.html', ninja_color=ninja_color)
     else:
         return redirect('/401')
-        
 @app.route('/401')
 def not_april():
     return render_template('exception401.html')

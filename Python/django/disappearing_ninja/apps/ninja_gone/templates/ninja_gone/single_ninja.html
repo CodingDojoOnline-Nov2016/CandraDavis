@@ -3,20 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'ninja_gone/img'%}">
   </head>
   <body>
-    {% if {{ color }} == blue %}
+    {% if color == 'blue' %}
     <h1>Leonardo</h1>
     <img src="{% static 'ninja_gone/img/leonardo.jpg' %}" alt="leonardo">
-    {% elif {{ color }} == purple %}
-    <h1>Donnatello</h1>
-    <img src="{% static 'ninja_gone/img/donatello.jpg' %}" alt="donnatello">
-    {% elif {{ color }} == red %}
-    <h1>Raphael</h1>
-    <img src="{% static 'ninja_gone/img/raphael.jpg' %}" alt="raphael">
-    {% else {{ color }} == orange %}
-    <h1>Michelangelo</h1>
-    <img src="{% static 'ninja_gone/img/michelangelo.jpg' %}" alt="michelangelo">
+      {% elif color == 'purple' %}
+      <h1>Donnatello</h1>
+      <img src="{% static 'ninja_gone/img/donatello.jpg' %}" alt="donnatello">
+      {% elif color == 'red' %}
+      <h1>Raphael</h1>
+      <img src="{% static 'ninja_gone/img/raphael.jpg' %}" alt="raphael">
+      {% elif color == 'orange' %}
+      <h1>Michelangelo</h1>
+      <img src="{% static 'ninja_gone/img/michelangelo.jpg' %}" alt="michelangelo">
     {% endif %}
   </body>
 </html>

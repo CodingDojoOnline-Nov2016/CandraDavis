@@ -1,0 +1,4 @@
+../../virtualEnvironment/
+/virtualEnvironment/
+.DS_STRORE
+*.pyc

@@ -8,12 +8,12 @@
   </head>
   <body>
     <h1>Here's the Gang!</h1>
-      {{ messages }}
-      {% for message in messages %}
-        {{ message }}
-        <img src="{% static 'ninja_gone/img/notapril.jpg' %}" alt="april">
-      {% endfor%}
-
+      {% if messages %}
+        {% for message in messages %}
+          <h2>{{ message }}</h2>
+          <img src="{% static 'ninja_gone/img/notapril.jpg' %}" alt="april">
+        {% endfor%}
+      {% endif %}
     <img src="{% static 'ninja_gone/img/donatello.jpg' %}" alt="donnatello">
     <img src="{% static 'ninja_gone/img/leonardo.jpg' %}" alt="leonardo">
     <img src="{% static 'ninja_gone/img/michelangelo.jpg' %}" alt="michelangelo">

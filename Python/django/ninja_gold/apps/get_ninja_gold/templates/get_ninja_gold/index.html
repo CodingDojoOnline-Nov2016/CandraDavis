@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <style media="screen">
+      p.red {
+        color: red;
+      }
+      p.green{
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Find some Gold</h1>
+    <h3>Gold Count: </h3>
+    <div class="count-box">
+      {{ total_gold }}
+    </div>
+    <div class="">
+      <h3>Farm</h3>
+      <p>(earns 10 - 20 gold)</p>
+      <form class="location" action="/process_money" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="building" value="farm">
+        <input type="submit" name="submit" value="Find Gold!">
+      </form>
+    </div>
+
+      <div class="">
+        <h3>Cave</h3>
+        <p>(earns 5 - 10 gold)</p>
+        <form class="location" action="/process_money" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="building" value="cave">
+          <input type="submit" name="submit" value="Find Gold!">
+        </form>
+    </div>
+
+    <div class="">
+      <h3>House</h3>
+      <p>(earns 2 - 5 gold)</p>
+      <form class="location" action="/process_money" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="building" value="house">
+        <input type="submit" name="submit" value="Find Gold!">
+      </form>
+    </div>
+
+    <div class="">
+      <h3>Casino</h3>
+      <p>(earns/takes 0 - 50 gold)</p>
+      <form class="location" action="/process_money" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="building" value="casino">
+        <input type="submit" name="submit" value="Find Gold!">
+      </form>
+    </div>
+    <div class="display">
+      {{ activties }}
+      {% if activities %}
+        {% for activity in activities. %}
+          {% if activities.color == 'green' %}
+          <p class="{{ activities.color }}">Earned {{ activities.gold }} gold from the {{ activities.building }}! {{ activities.time }}</p>
+          {% elif activities.color == 'red' %}
+          <p class="{{ activities.color }}">Entered a {{ activities.building }} and lost {{ activities.gold }}...Ouch! {{ activities.time }}</p>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </body>
+</html>
