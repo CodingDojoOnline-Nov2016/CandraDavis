@@ -16,7 +16,7 @@
     <h1>Find some Gold</h1>
     <h3>Gold Count: </h3>
     <div class="count-box">
-      {{ total_gold }}
+      {{ request.session.total_gold }}
     </div>
     <div class="">
       <h3>Farm</h3>
@@ -58,13 +58,12 @@
       </form>
     </div>
     <div class="display">
-      {{ activties }}
-      {% if activities %}
-        {% for activity in activities. %}
-          {% if activities.color == 'green' %}
-          <p class="{{ activities.color }}">Earned {{ activities.gold }} gold from the {{ activities.building }}! {{ activities.time }}</p>
-          {% elif activities.color == 'red' %}
-          <p class="{{ activities.color }}">Entered a {{ activities.building }} and lost {{ activities.gold }}...Ouch! {{ activities.time }}</p>
+      {% if request.session.results %}
+        {% for each_result in request.session.results %}
+          {% if each_result.color == 'green' %}
+          <p class="{{ each_result.color }}">Earned {{ each_result.gold }} gold from the {{ each_result.building }}! {{ each_result.time }}</p>
+          {% elif each_result.color == 'red' %}
+          <p class="{{ each_result.color }}">Entered a {{ each_result.building }} and lost {{ each_result.gold }}...Ouch! {{ each_result.time }}</p>
           {% endif %}
         {% endfor %}
       {% endif %}

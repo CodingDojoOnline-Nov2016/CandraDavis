@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index),
-    url(r'^process_money$', views.post)
+    url(r'^process_money$', views.process)
 ]
