@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      div.success_green{
+        background-color: green;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="success_green">
+      {% if messages %}
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <h2>Email Addresses Entered:</h2>
+    {% for each_email in emails %}
+    <p>{{ each_email.email }} <span><span>{{ each_email.created_at }}</span></span></p>
+    ****** list of email addresses with date of creation ******
+    {% endfor %}
+  </body>
+</html>
