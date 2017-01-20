@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Email Validation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
     <style media="screen">
       div.error_red{
         background-color: red;
@@ -21,7 +22,7 @@
     <form class="email_valid" action="/process" method="post">
       {% csrf_token %}
       <label for="email">Email Address: <input type="email" name="email" placeholder="name@example.com"></label>
-      <input type="submit" name="submit" value="Submit">
+      <input class="button button-primary" type="submit" name="submit" value="Submit">
     </form>
   </body>
 </html>

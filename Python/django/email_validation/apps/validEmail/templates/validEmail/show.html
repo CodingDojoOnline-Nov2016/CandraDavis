@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Success Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
     <style media="screen">
       div.success_green{
         background-color: green;
@@ -20,8 +21,8 @@
     </div>
     <h2>Email Addresses Entered:</h2>
     {% for each_email in emails %}
-    <p>{{ each_email.email }} <span><span>{{ each_email.created_at }}</span></span></p>
-    ****** list of email addresses with date of creation ******
+    <p>{{ each_email.email }} <span><span>{{ each_email.created_at }}</span></span><span><span><span><a class="button" href="/delete">Delete</a></span></span></span></p>
     {% endfor %}
+    <a class="button" href="/index">Return</a>
   </body>
 </html>

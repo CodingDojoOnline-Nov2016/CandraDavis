@@ -15,11 +15,17 @@ class EmailManager(models.Manager):
         if len(errors) > 0:
             return(False, errors)
         else:
-            v = Email.validateEmail.create(email=email)
+            v = Email.objects.create(email=email)
             v.save()
             return(True, v)
-    # def delete_email(self, id):
-
+    def delete_email(self, id):
+        d = Email.objects.get(id=id)
+        if not d: #if the passed in id does not equal an id in the database...
+            err_mess = 'Sorry, email not found.'
+            return(False, err_mess)
+        else:
+            d.delete()
+            return(True, d)
 
 class Email(models.Model):
     email = models.CharField(max_length=255)
