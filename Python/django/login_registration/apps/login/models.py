@@ -38,7 +38,7 @@ class UserManager(models.Manager):
         elif not data['password'].encode() == data['pw_confirm'].encode():
             errors.append('Passwords do not match! Please enter matching passwords')
 
-        if len(errors) > 0:
+        if errors:
             return(False, errors)
         else:
             first_name = data['first_name']
@@ -66,6 +66,8 @@ class UserManager(models.Manager):
             errors.append('Invalid password')
         elif not bcrypt.hashpw(pw, pw_hash) == u.pw_hash:
             errors.append('Invlaid password')
+
+        if errors:
             return(False, errors)
         else:
             return(True, u)
