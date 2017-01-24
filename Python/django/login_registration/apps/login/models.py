@@ -10,46 +10,61 @@ EMAIL_REGEX = re.compile(r'^[a-zA-z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 class UserManager(models.Manager):
     def new_user(self, request):
         errors = []
-        print reg_user
+        data = request.POST
         print '9'*50
-        if len(request.POST['first_name']) < 2:
+        if len(data['first_name']) < 2:
             errors.append('Please enter a valid First Name')
-        elif not request.POST['first_name'.isalpha():
+        elif not data['first_name'].isalpha():
             errors.append('Please enter a valid First Name')
-        if len(request.POST['last_name']) < 2: 
+
+        if len(data['last_name']) < 2:
             errors.append('Please enter a valid Last Name')
-        elif not request.POST['last_name'].isalpha():
+        elif not data['last_name'].isalpha():
             errors.append('Please enter a valid Last Name')
-        elif len(request.POST['email']) < 1:
+
+        if len(data['email']) < 1:
             errors.append('Please enter your email')
-        elif not re.match(EMAIL_REGEX, request.POST['email']):
+        elif not re.match(EMAIL_REGEX, data['email']):
             errors.append('Please enter a valid Email address')
-        elif not request.POST['password'].encode() == request.POST['pw_confirm'].encode():
-            errors.append('Please enter matching passwords')
-        elif not len(request.POST['password'].encode()) < 8:
+        else:
+            u_email = data['email']
+            try:
+                User.objects.get(u_email=email)
+                errors.append('Email already exists.  Please enter a valid email or login.')
+            except:
+                pass
+        if len(data['password'].encode()) < 8:
             errors.append('Password must be at least 8 characters')
+        elif not data['password'].encode() == data['pw_confirm'].encode():
+            errors.append('Passwords do not match! Please enter matching passwords')
+
         if len(errors) > 0:
             return(False, errors)
         else:
-            first_name = request.POST['first_name']
-            last_name = request.POST['last_name']
-            email = request.POST['email']
-            pw_confirm = request.POST['pw_confirm'].encode()
+            first_name = data['first_name']
+            last_name = data['last_name']
+            email = data['email']
+            pw_confirm = data['pw_confirm'].encode()
             pw_hash = bcrypt.hashpw(pw_confirm, bcrypt.gensalt())
             u = User.objects.create(first_name=first_name, last_name=last_name, email=email, pw_hash=pw_hash)
             u.save()
             return(True, u)
 
-    def login(self, session):
+    def login(self, request):
         errors = []
-        u = User.objects.get(request.session['email']=email)
-        if len(request.session['email']) < 1:
+        # have to look into how the password is being encoded & hashed. Getting incorrect password error when logging in with a correct password.
+        pw = request.POST['password'].encode()
+        email = request.POST['email']
+        pw_hash = bcrypt.hashpw(pw, bcrypt.gensalt())
+        if len(email) < 1:
             errors.append('Please enter your email')
-        elif not re.match(EMAIL_REGEX, request.session['email']):
+        elif not re.match(EMAIL_REGEX, email):
             errors.append('Please enter a valid email')
-        elif not len(request.session['password']) > 8:
-            errors.append('Invalid email')
-        elif not bcrypt.hashpw(request.session['password'], hashed) == u.pw_hash:
+        else:
+            u = User.objects.get(email=email)
+        if len(pw) < 8:
+            errors.append('Invalid password')
+        elif not bcrypt.hashpw(pw, pw_hash) == u.pw_hash:
             errors.append('Invlaid password')
             return(False, errors)
         else:

@@ -12,21 +12,8 @@ def index(request):
 
 def process(request):
     if request.method == 'POST':
-        print '1'*50
         if request.POST['process'] == 'register':
-            print '2'*50
-            # password = bcrypt.hashpw(request.POST['password'], bcrypt.gensalt())
-            # reg_user = {
-            #     'first_name' : request.POST['first_name'],
-            #     'last_name' : request.POST['last_name'],
-            #     'email' : request.POST['email'],
-            #     ,
-            #     'pw_confirm' :
-            # }
-            # print reg_user
             add_user = User.objects.new_user(request)
-            print '4'*50
-            print add_user
             if add_user[0] == False:
                 request.session['errors'] = add_user[1]
                 return redirect('/')
@@ -37,8 +24,7 @@ def process(request):
                 return redirect('/success')
 
         elif request.POST['process'] == 'login':
-            # pw = bcrypt.generate_password_hash(request.POST['password'])
-            login_user = User.object.login(request.POST['email'], pw)
+            login_user = User.objects.login(request)
             if login_user[0] == True:
                 request.session['name'] = login_user[1].first_name
                 request.session['id'] = login_user[1].id
@@ -46,9 +32,9 @@ def process(request):
                 return redirect('/success')
             else:
                 request.session['errors'] = login_user[1]
-
-# def login(request):
-#     return redirect('/success')
+                return redirect('/')
+        else:
+            return redirect('/')
 
 def show(request):
     return render(request, 'login/success.html')
