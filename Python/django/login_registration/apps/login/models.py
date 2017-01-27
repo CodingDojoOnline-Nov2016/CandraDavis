@@ -55,16 +55,15 @@ class UserManager(models.Manager):
         # have to look into how the password is being encoded & hashed. Getting incorrect password error when logging in with a correct password.
         pw = request.POST['password'].encode()
         email = request.POST['email']
-        pw_hash = bcrypt.hashpw(pw, bcrypt.gensalt())
         if len(email) < 1:
             errors.append('Please enter your email')
         elif not re.match(EMAIL_REGEX, email):
             errors.append('Please enter a valid email')
         else:
-            u = User.objects.get(email=email)
+            u = User.objects.get(email = email)
         if len(pw) < 8:
             errors.append('Invalid password')
-        elif not bcrypt.hashpw(pw, pw_hash) == u.pw_hash:
+        elif not bcrypt.hashpw(pw, u.pw_hash.encode()) == u.pw_hash:
             errors.append('Invlaid password')
 
         if errors:

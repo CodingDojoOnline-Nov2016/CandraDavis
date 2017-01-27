@@ -13,7 +13,7 @@ def index(request):
 def process(request):
     if request.method == 'POST':
         if request.POST['process'] == 'register':
-            add_user = User.objects.new_user(request.POST)
+            add_user = User.objects.new_user(request)
             if add_user[0] == False:
                 request.session['errors'] = add_user[1]
                 return redirect('/')
@@ -24,17 +24,21 @@ def process(request):
                 return redirect('/success')
 
         elif request.POST['process'] == 'login':
-            login_user = User.objects.login(request.POST)
-            if login_user[0] == True:
-                request.session['name'] = login_user[1].first_name
-                request.session['id'] = login_user[1].id
+            u_log = User.objects.login(request)
+            if u_log[0] == True:
+                request.session['name'] = u_log[1].first_name
+                request.session['id'] = u_log[1].id
                 messages.success(request, 'Successfully logged in!')
                 return redirect('/success')
             else:
-                request.session['errors'] = login_user[1]
+                request.session['errors'] = u_log[1]
                 return redirect('/')
         else:
             return redirect('/')
 
 def show(request):
     return render(request, 'login/success.html')
+
+def logout(request):
+    request.session.clear()
+    return redirect('/')

@@ -17,6 +17,9 @@
         <p class="success_green">{{ message }}</p>
       {% endfor %}
     {% endif %}
-    <a class="button" href="/">Go Back!</a>
+    <form class="logout" action="/logout" method="post">
+      {% csrf_token %}
+      <input type="submit" name="submit" value="Logout">
+    </form>
   </body>
 </html>
