@@ -8,8 +8,9 @@
     <h1>Top 25 Leaders</h1>
     <h2>Top 25 by Total Gold</h2>
     <ol>
+      <!-- {{ top_leaders }} -->
       {% for leader in top_leaders %}
-        <li>{{ leader.first_name }} {{ leader.total_gold_earned }}</li>
+        <li>{{ leader.user.first_name }} {{ leader.total_gold_earned }}</li>
       {% endfor %}
     </ol>
     <!-- <h2>Top 25 by Game Gold Count</h2>

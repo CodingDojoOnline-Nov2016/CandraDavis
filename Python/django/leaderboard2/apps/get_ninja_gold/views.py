@@ -1,22 +1,22 @@
 from django.shortcuts import render, redirect
 import random, datetime
-
+from ..integration2.models import Leaderboard
 
 def index(request):
     #set the gold count to zero on first page load.
     try:
+        request.session['count']
         request.session['total_gold']
-    except KeyError:
-        request.session['total_gold'] = 0
-    #set up empty list to gather activites
-    try:
         request.session['results']
     except KeyError:
+        request.session['count'] = 0
+        request.session['total_gold'] = 0
         request.session['results'] = []
+
     context = {
         'title' : 'Ninja Gold'
     }
-    
+
     return render(request, 'get_ninja_gold/index.html', context)
 def process(request):
     if request.method == 'POST':
@@ -24,54 +24,49 @@ def process(request):
         time_now = datetime.datetime.now().strftime('%Y/%m/%d %I:%M%p')
         print time_now
         gold = 0
+
+        request.session['count'] += 1
+
         # a dictionary to hold all of the results from each building.
-        loc_activity = {
-            'building': None,
-            'gold': None,
-            'time': None,
-            'color': None,
-            'count': 0
-            }
+        loc_activity = {}
+        loc_activity['time'] = time_now
 
         if request.POST['building'] == 'farm':
             gold = random.randint(10, 20)
             request.session['total_gold'] += gold
             loc_activity['building'] = 'farm'
             loc_activity['gold'] = gold
-            loc_activity['time'] = time_now
             loc_activity['color'] = 'green'
-            loc_activity['count'] += 1
+
 
         elif request.POST['building'] == 'cave':
             gold = random.randint(5, 10)
             request.session['total_gold'] += gold
             loc_activity['building'] = 'cave'
             loc_activity['gold'] = gold
-            loc_activity['time'] = time_now
             loc_activity['color'] = 'green'
-            loc_activity['count'] += 1
+
 
         elif request.POST['building'] == 'house':
             gold = random.randint(2, 5)
             request.session['total_gold'] += gold
             loc_activity['building'] = 'house'
             loc_activity['gold'] = gold
-            loc_activity['time'] = time_now
             loc_activity['color'] = 'green'
-            loc_activity['count'] += 1
+
 
         elif request.POST['building'] == 'casino':
             gold = random.randint(-50, 50)
             request.session['total_gold'] += gold
             loc_activity['building'] = 'casino'
             loc_activity['gold'] = gold
-            loc_activity['time'] = time_now
-            loc_activity['count'] += 1
+
             if gold > 0:
                 loc_activity['color'] = 'green'
             else:
                 loc_activity['color'] = 'red'
             print loc_activity
+
     request.session['results'].append(loc_activity)
     print request.session['results']
     return redirect('/')
@@ -84,8 +79,9 @@ def update(request):
         'new_top_score': request.session['total_gold'],
         'id': request.session['id']
         }
-    u_update = Leaderboard.objects(update_gold)
+    u_update = Leaderboard.objects.save_gold(update_gold)
     context = {
         "new_totals": u_update,
     }
+    print u_update.new_top_score
     return render(request, 'get_ninja_gold/index.html', context)

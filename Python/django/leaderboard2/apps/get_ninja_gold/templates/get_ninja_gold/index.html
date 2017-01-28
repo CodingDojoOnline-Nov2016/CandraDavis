@@ -49,9 +49,8 @@
       {{ request.session.total_gold }}
     </div>
     {% if new_totals %}
-      {% for each_val in new_totals %}
-        <p>{{ each_val }}</p>
-      {% endfor %}
+      <h4>Your New Total Gold Is:</h4>
+        <p>{{ new_totals.total_gold_earned }}</p>
     {% endif %}
     <div class="building_location">
       <h3>Farm</h3>
