@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <h1>Top 25 Leaders</h1>
+    <h2>Top 25 by Total Gold</h2>
+    <ol>
+      {% for leader in top_leaders %}
+        <li>{{ leader.first_name }} {{ leader.total_gold_earned }}</li>
+      {% endfor %}
+    </ol>
+    <!-- <h2>Top 25 by Game Gold Count</h2>
+    <ol>
+      {% for leader in top_leaders %}
+        <li>{{ leader.first_name }} {{ leader.total_gold_earned }}</li>
+      {% endfor %} -->
+    </ol>
+  </body>
+</html>

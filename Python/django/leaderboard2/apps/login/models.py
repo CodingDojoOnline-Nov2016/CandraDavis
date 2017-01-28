@@ -13,7 +13,7 @@ class UserManager(models.Manager):
         data = request.POST
         print data
         print '9'*50
-        
+
         if len(data['first_name']) < 2:
             errors.append('Please enter a valid First Name')
         elif not data['first_name'].isalpha():
@@ -31,7 +31,7 @@ class UserManager(models.Manager):
         else:
             u_email = data['email']
             try:
-                User.objects.get(u_email=email)
+                u = User.objects.get(u_email=email)
                 errors.append('Email already exists.  Please enter a valid email or login.')
             except:
                 pass

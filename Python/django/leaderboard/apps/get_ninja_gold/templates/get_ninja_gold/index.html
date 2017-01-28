@@ -25,7 +25,7 @@
   <body>
     <nav>
         <ul>
-          <li class='register_btn'><a class="button" href="{% url 'login:create_log_reg' %}">Register</a></li>
+          <li class='register_btn'><a class="button" href="{% url 'login:index' %}">Register</a></li>
           {% if id in session %}
           <li><a class="button" href="{% url 'integration:leaderboard' %}">View Leaderboard</a</li>
           {% endif %}

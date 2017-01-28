@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login &amp; Reg | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <style media="screen">
+      p.error_red{
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="errors">
+      {% if request.session.errors %}
+        {% for each_error in request.session.errors %}
+          <p class="error_red">{{ each_error }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <h2>Registration</h2>
+    <form class="register" action="{% url 'login:process' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="process" value="register">
+      <label for="first_name">First Name: <input type="text" name="first_name" placeholder="John"></label>
+      <label for="last_name">Last Name: <input type="text" name="last_name" placeholder="Smith"></label>
+      <label for="email">Email: <input type="email" name="email" placeholder="name@example.net"></label>
+      <label for="password">Password (At least 8 characters): <input type="text" name="password" placeholder="********"></label>
+      <label for="pw_confirm">Confirm Password: <input type="text" name="pw_confirm" placeholder="*********"></label>
+      <input class="button button-primary" type="submit" name="submit" value="Register">
+    </form>
+    <h2>Login</h2>
+    <form class="register" action="{% url 'login:process' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="process" value="login">
+      <label for="email">Email: <input type="email" name="email" placeholder="name@example.net"></label>
+      <label for="password">Password (At least 8 characters): <input type="text" name="password" placeholder="********"></label>
+      <input type="submit" name="submit" value="Login">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login &amp; Reg | Success</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <style media="screen">
+      p.success_green{
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Success! Welcome {{ request.session.name }}</h1>
+    {% if messages %}
+      {% for message in messages %}
+        <p class="success_green">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+    <form class="logout" action="/logout" method="post">
+      {% csrf_token %}
+      <input type="submit" name="submit" value="Logout">
+    </form>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
-from .models import User, UserManager
+from .models import User
 
 # Create your views here.
 def index(request):
