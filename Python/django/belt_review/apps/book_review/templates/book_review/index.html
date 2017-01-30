@@ -52,7 +52,7 @@
     <div class="review-side">
       <h3>Recent Book Reviews:</h3> <br>
       {% for latest_book in latest_reviews %}
-      <a href="{% url 'books:book_page' {{latest_book.id}} %}">{{ latest_book.title }}</a> <br>
+      <a href="{% url 'books:book_page' latest_book.id %}">{{ latest_book.title }}</a> <br>
       <p>{{ latest_book.rating }}</p><i class="tiny material-icons">grade</i> <br>
 
       <a href="#">{{ latest_book.user.user_name }}</a> <p>{{ latest_book.review }}</p> <br>
@@ -64,7 +64,7 @@
     <h3>Other Books with Reviews:</h3> <br>
     <div class="scroll-books">
       {% for book in books %}
-      <a href="{% url 'books:book_page' {{book.id}} %}">{{ book.title }}</a>
+      <a href="{% url 'books:book_page' book.id %}">{{ book.title }}</a>
       {% endfor %}
     </div>
   </div>

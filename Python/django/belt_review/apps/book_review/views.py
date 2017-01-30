@@ -24,13 +24,14 @@ def update(request):
         return redirect('books:add_books')
     else:
         print new_book
-        request.session['title'] = new_book.title
-        request.session['author'] = new_book.author
+        request.session['id'] = new_book.id
         return redirect('books:show_book')
 
 def show_book(request):
-
-    context = {}
+    context = {
+        'view_book': Books.objects.get(id=request.session['id']),
+        'reviews': Books.objects.order_by('updated_at')[:3],
+    }
     return render(request, 'book_review/book.html', context)
 
 def add_another_review(request):

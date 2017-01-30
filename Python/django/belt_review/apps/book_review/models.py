@@ -35,14 +35,10 @@ class BookManager(models.Manager):
             review = data['review']
             new_book = Books.objects.create(title=title, author=author, rating=rating, review=review)
             return(True, new_book)
-        
+
         # author = self.objects.get(author=data['author'])
         # elif author == data['author']:
         #     errors.append('Author al')
-
-
-
-
 
 
 class Books(models.Model):
@@ -54,4 +50,4 @@ class Books(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
-objects = BookManager()
+    objects = BookManager()
