@@ -7,7 +7,7 @@ def show(request):
     # top_leaders = Leaderboard.objects.leaders()
     print Leaderboard.objects.all()
     context = {
-        'top_leaders': Leaderboard.objects.order_by('total_gold_earned'),
+        'top_leaders': Leaderboard.objects.order_by('-total_gold_earned'),
         'title': 'Top 25 Leaderboard',
     }
     return render(request, 'integration2/leaderboard.html', context)

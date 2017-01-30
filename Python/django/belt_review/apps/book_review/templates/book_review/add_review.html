@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Book and Review</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <style media="screen">
+      ul,
+      li,
+      h4{
+        display: inline-block;
+      }
+      ul{
+        margin-left: 400px;
+      }
+      li{
+        text-decoration: none;
+        margin-right: 30px;
+      }
+      div.errrors {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <h4> **** user_name ****</h4>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a class="button" href="{% url 'books:homepage' %}">Home</a></li>
+          <li><a class="button button-primary" href="{% url 'books:logout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="errors">
+      {% if request.session.errors %}
+        {% for each_error in request.session.errors %}
+          <p class="error_red">{{ each_error }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <form class="add_book_review">
+      {% csrf_token %}
+      <label for="book_title">Book:<input placeholder="Title" id="book_title" type="text" name="book_title"></label>
+      <label for="author_select">Author:</label>
+      <!--  this will have author names listed in options from query of all authors -->
+      <select>
+          <label>Choose from the List: </label>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <p>Or Enter Author Name: </p>
+        <label for="author">Author: <input placeholder="Author Full Name" id="author" type="text" name="author"></label>
+        <label for="textarea1">Review</label>
+          <textarea id="textarea1" class="review"></textarea>
+        <label for='rating'>Rating in Stars</label>
+          <select>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <br>
+        <input type="submit" action="{% url 'books:update' %}" name="submit" value="Add Book and Review"
+    </div>
+  </body>
+</html>

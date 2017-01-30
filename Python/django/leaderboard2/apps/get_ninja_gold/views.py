@@ -83,5 +83,6 @@ def update(request):
     context = {
         "new_totals": u_update,
     }
-    print u_update.new_top_score
+    print u_update.top_score
+    # request.session.clear(['total_gold'])
     return render(request, 'get_ninja_gold/index.html', context)

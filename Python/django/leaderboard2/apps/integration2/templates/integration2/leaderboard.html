@@ -3,16 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
   </head>
   <body>
     <h1>Top 25 Leaders</h1>
-    <h2>Top 25 by Total Gold</h2>
+    <h4>Top 25 by Total Gold</h4>
     <ol>
       <!-- {{ top_leaders }} -->
       {% for leader in top_leaders %}
         <li>{{ leader.user.first_name }} {{ leader.total_gold_earned }}</li>
       {% endfor %}
     </ol>
+    <a class="button primary-button" href="{% url 'ninja:index' %}">Go Back</a>
     <!-- <h2>Top 25 by Game Gold Count</h2>
     <ol>
       {% for leader in top_leaders %}
