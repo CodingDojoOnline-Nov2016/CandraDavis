@@ -5,9 +5,10 @@ from ..login.models import User
 # Create your models here.
 
 class BookManager(models.Manager):
-    def new_book_review(self, data):
+    def new_book_review(self, request):
         errors = []
-
+        print request.POST
+        data = request.POST
         if len(data['title']) < 1:
             errors.append('Please enter a valid Book Title')
         elif not data['title'].isalpha():
@@ -18,7 +19,7 @@ class BookManager(models.Manager):
         elif not data['author'].isalpha():
             errors.append('Please enter a valid Author')
 
-        if len(data['rating']) < 1:
+        if int(data['rating']) < 1:
             errors.append('Please enter your Rating')
 
         if len(data['review']) < 2:

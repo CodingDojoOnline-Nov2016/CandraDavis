@@ -39,6 +39,6 @@ def process(request):
 # def show(request):
 #     return render(request, 'login/success.html')
 
-def logout(request):
-    request.session.clear()
-    return redirect('login:index')
+# def logout(request):
+#     request.session.clear()
+#     return redirect('login:index')

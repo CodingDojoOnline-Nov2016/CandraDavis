@@ -3,9 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Books Home</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
     <style media="screen">
+    ul.nav,
+    li.nav-button,
+    h4{
+      display: inline-block;
+    }
+    ul.nav{
+      margin-left: 400px;
+    }
+    nav.li{
+      text-decoration: none;
+    }
     div.scroll-books {
       background-color: #00FFFF;
       width: 200px;
@@ -29,6 +39,7 @@
     div.side {
       width: 400px;
       padding: 5px;
+      vertical-align: top;
     }
     div.review-side {
       margin-right: 200px;
@@ -36,19 +47,22 @@
     div.scroll-books{
       width: 350px;
     }
+
     </style>
   </head>
   <body>
     <nav>
-    <div class="nav-wrapper">
-      <h4>Welcome request.session.user_name</h4>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="{% url 'books:add_books' %}">Add Book and Review</a></li>
-        <li><a href="{% url 'books:logout' %}">Logout</a></li>
+      <h4>Welcome {{ request.session.user_name }}</h4>
+      <ul class='nav'>
+        <li class='nav-button'><a class='button' href="{% url 'books:add_books' %}">Add Book and Review</a></li>
+        <li class='nav-button'><a class='button button-primary' href="{% url 'books:logout' %}">Logout</a></li>
       </ul>
-    </div>
   </nav>
-
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    {% endif %}
     <div class="review-side">
       <h3>Recent Book Reviews:</h3> <br>
       {% for latest_book in latest_reviews %}

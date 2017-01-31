@@ -9,22 +9,26 @@ def show(request):
     context = {
         'latest_reviews': Books.objects.order_by('updated_at')[:3],
         'books': Books.objects.all(),
+        # 'user_name': request.session['user_name']
     }
     return render(request, 'book_review/index.html', context)
 
 def create(request):
+
     context = {}
     return render(request, 'book_review/add_review.html', context)
 
 def update(request):
     if request.method == 'POST':
         new_book = Books.objects.new_book_review(request)
+        print '%'*100
+        print new_book
     if new_book[0] == False:
-        messages.error(new_book[1])
+        messages.error(request, new_book[1], extra_tags='adding_book')
         return redirect('books:add_books')
     else:
         print new_book
-        request.session['id'] = new_book.id
+        request.session['book_id'] = new_book.id
         return redirect('books:show_book')
 
 def show_book(request):
@@ -42,4 +46,5 @@ def show_user(request):
     return render(request, 'book_review/user.html', context)
 
 def logout(request):
-    return redirect('login:logout')
+    request.session.clear()
+    return redirect('login:index')

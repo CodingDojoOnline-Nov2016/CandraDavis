@@ -69,7 +69,7 @@ def process(request):
 
     request.session['results'].append(loc_activity)
     print request.session['results']
-    return redirect('/')
+    return redirect('ninja:index')
 
 def update(request):
     # save_gold = Leaderboard.objects.get(id=request.session['id'])

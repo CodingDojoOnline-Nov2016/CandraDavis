@@ -6,5 +6,5 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^process$', views.process, name='create'),
     # url(r'^success$', views.show),
-    url(r'^logout$', views.logout),
+    # url(r'^logout$', views.logout),
 ]

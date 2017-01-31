@@ -9,10 +9,10 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <h4> **** user_name****</h4>
+        <h4> {{ request.session.user_name }}</h4>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="{% books:homepage %}">Home</a></li>
-          <li><a href="{% login:logout %}">Logout</a></li>
+          <li><a href="{% ur 'books:homepage' %}">Home</a></li>
+          <li><a href="{% url 'books:logout' %}">Logout</a></li>
         </ul>
       </div>
     </nav>
