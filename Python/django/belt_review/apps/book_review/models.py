@@ -5,36 +5,43 @@ from ..login.models import User
 # Create your models here.
 
 class BookManager(models.Manager):
-    def new_book_review(self, request):
+    def new_book_review(self, data, u_id):
         errors = []
-        print request.POST
-        data = request.POST
+        print data
+        print u_id
+
+        # data = request.POST
         if len(data['title']) < 1:
             errors.append('Please enter a valid Book Title')
-        elif not data['title'].isalpha():
-            errors.append('Please enter a valid Book Title')
+        # elif not data['title'].isalpha():
+        #     errors.append('Please enter a valid Book Title')
 
         if len(data['author']) < 2:
-            errors.append('Please enter a valid Author')
-        elif not data['author'].isalpha():
-            errors.append('Please enter a valid Author')
+            errors.append('Please enter an Author name')
+        # elif not data['author'].isalpha():
+        #     errors.append('Please enter a valid Author')
 
         if int(data['rating']) < 1:
             errors.append('Please enter your Rating')
 
         if len(data['review']) < 2:
             errors.append('Please enter your Review')
-        elif not data['review'].isalpha():
-            errors.append('Please enter a valid Review')
+        # elif not data['review'].isalpha():
+        #     errors.append('Please enter a valid Review')
 
         if errors:
             return (False, errors)
         else:
+            user = User.objects.get(pk=u_id)
+            print '%'*100
+            print user
             title = data['title']
             author = data['author']
             rating = int(data['rating'])
             review = data['review']
-            new_book = Books.objects.create(title=title, author=author, rating=rating, review=review)
+            new_book = Books.objects.create(title=title, author=author, rating=rating, review=review, user=user)
+            print '^'*100
+            print new_book
             return(True, new_book)
 
         # author = self.objects.get(author=data['author'])

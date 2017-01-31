@@ -17,7 +17,7 @@
         text-decoration: none;
         margin-right: 30px;
       }
-      div.errrors {
+      div.error_red {
         color: red;
       }
     </style>
@@ -33,7 +33,7 @@
       </div>
     </nav>
     <div class="errors">
-      {% if messages.adding_book %}
+      {% if messages %}
         {% for message in messages %}
           <p class="error_red">{{ message }}</p>
         {% endfor %}

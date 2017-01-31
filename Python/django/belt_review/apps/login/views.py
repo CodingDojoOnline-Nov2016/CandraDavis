@@ -19,7 +19,7 @@ def process(request):
                 return redirect('login:index')
             else:
                 request.session['user_name'] = add_user[1].user_name
-                request.session['id'] = add_user[1].id
+                request.session['u_id'] = add_user[1].id
                 messages.success(request, 'Successfully registered!')
                 return redirect('books:homepage')
 
@@ -27,7 +27,9 @@ def process(request):
             u_log = User.objects.login(request)
             if u_log[0] == True:
                 request.session['user_name'] = u_log[1].user_name
-                request.session['id'] = u_log[1].id
+                request.session['u_id'] = u_log[1].id
+                print '$'*100
+                print request.session['u_id']
                 messages.success(request, 'Successfully logged in!')
                 return redirect('books:homepage')
             else:
