@@ -3,9 +3,14 @@ from __future__ import unicode_literals
 from django.db import models
 from ..login.models import User
 # Create your models here.
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=90)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
 
-class BookManager(models.Manager):
-    def new_book_review(self, data, u_id):
+class ReviewManager(models.Manager):
+    def new_review(self, data, u_id):
         errors = []
         print data
         print u_id
@@ -49,12 +54,11 @@ class BookManager(models.Manager):
         #     errors.append('Author al')
 
 
-class Books(models.Model):
+class Review(models.Model):
     user = models.ForeignKey(User)
-    title = models.CharField(max_length=255)
-    author = models.CharField(max_length=90)
+    book = models.ForeignKey(Book)
     rating = models.SmallIntegerField(6)
-    review = models.CharField(max_length=255)
+    comments = models.CharField(max_length=255)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 

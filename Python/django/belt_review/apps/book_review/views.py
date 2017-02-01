@@ -31,8 +31,9 @@ def update(request):
             return redirect('books:add_books')
         else:
             print new_book[1]
-            request.session['book_id'] = new_book[1].id
-            return redirect('books:show_book' b_id=request.session["book_id"])
+            b_id = new_book[1].id
+            print b_id
+            return redirect('books:show_book', kwargs={'id':b_id})
     else:
         return redirect('books:add_books')
 def show_book(request, b_id):
