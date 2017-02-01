@@ -8,25 +8,27 @@ def index(request):
 
 def show(request):
     #show book homepage with list of 3 most recently reviewed books and a list of other reviewed books with links.
-    reviews = Review.objects.recent_review()
-    print reviews
-
-    reviewed_books = Book.objects.filter(title)
-    print reviewed_books
-
-    context = {
-        'recent_reviews': reviews,
-        'reviewed_books': reviewed_books,
-        # 'user_name': request.session['user_name']
-    }
-    return render('books/index.html', context)
+    # try:
+    #     reviews = Review.objects.order_by('-updated_at')#[:3]
+    #     print reviews
+    #     reviewed_books = Book.objects.all()
+    #     print reviewed_books
+    # except TemplateDoesNotExist:
+    #     pass
+    #
+    # context = {
+    #     'recent_reviews': reviews,
+    #     'reviewed_books': reviewed_books,
+    #     # 'user_name': request.session['user_name']
+    #     }
+    return render(request, 'books/index.html')# context
 
 def new_book(request):
     #called when clicking "add book review" from homepage. returns add_book_review.html with author_name list
-    context = {
-        'authors':Author.objects.filter(author_name),
-    }
-    return render('books/add_book.html', context)
+    # context = {
+    #     'authors':Author.objects.filter(author_name),
+    # }
+    return render(request, 'books/add_book_review.html') #, context
 
 def create(request):
     #1. processes post request.
@@ -37,7 +39,7 @@ def create(request):
         book_review_info = Review.objects.valid_review(request.POST, u_id)
     #4. returns book object to redirect to show_book
         if book_review_info[0] == False:
-            messages.error(book_review_info[1])
+            messages.error(request, book_review_info[1])
             return redirect('books:new_book')
         else:
             print book_review_info
@@ -56,21 +58,33 @@ def show_book(request, b_id):
     context = {
         'book_reviews': book_reviews,
     }
-    return render('books/book.html', context)
+    return render(request, 'books/book.html', context)
+
 def new_review(request, b_id):
     if request.method == 'POST':
         print request.POST
-    #1. runs validations on the review
-    #2. inserts new review into db
-    #3. returns a 3 most recent reviews, updated with new review
-    #4. return redirects to show_book with latest review
-    pass
+        #1. runs validations on the review
+        #2. inserts new review into db
+        add_review = Review.objects.add_new_review(request.POST)
+        if add_review[0] == False:
+            messages.error(request, add_review[1])
+            return redirect('books.show_book', kwargs={'b_id':b_id})
+        else:
+            messages.success(request, 'You have successfully added a new review.')
+            #3. returns a 5 most recent reviews, updated with new review
+            #4. return redirects to show_book with latest review
+            return redirect('books.show_book', kwargs={'b_id':b_id})
 
 def user_reviews(request, u_id):
     #1. queries Book & Review db's to get all of the books that have been reviewed by a user. uses request.session['user_id']
     #2. queries User db to get all of the user info to display on user.html
     #3. renders the page with context variable passing needed data.
-    pass
+    context = {
+        'user': User.objects.get(pk=u_id),
+        'books': Books.objects.filter(user=u_id),
+        'total_reviews': Books.objects.filter(Count(user=u_id))
+    }
+    return render(request, 'books/user.html', context)
 
 def delete_review(request):
     pass

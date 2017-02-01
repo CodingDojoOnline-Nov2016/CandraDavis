@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^books/(?P<b_id>\d+)/update$', views.new_review, name='new_review'),
     url(r'^books/review/destroy$', views.delete_review, name='delete_review'),
     url(r'^users/(?P<u_id>\d+)$', views.user_reviews, name='user_reviews'),
+    url(r'^books/logout$', views.logout, name='logout')
 ]
