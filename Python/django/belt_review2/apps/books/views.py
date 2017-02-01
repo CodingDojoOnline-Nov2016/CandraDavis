@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
+from models import Author, Book, Review
 # Create your views here.
 def index(request):
     return redirect('login:index')
@@ -43,7 +44,6 @@ def create(request):
             b_id = book_review_info[1].id
             context = {
                 'book': book_review_info,
-
             }
             return redirect('books:show_book', kwargs={'b_id':b_id})
 
@@ -58,6 +58,8 @@ def show_book(request, b_id):
     }
     return render('books/book.html', context)
 def new_review(request, b_id):
+    if request.method == 'POST':
+        print request.POST
     #1. runs validations on the review
     #2. inserts new review into db
     #3. returns a 3 most recent reviews, updated with new review
@@ -68,6 +70,9 @@ def user_reviews(request, u_id):
     #1. queries Book & Review db's to get all of the books that have been reviewed by a user. uses request.session['user_id']
     #2. queries User db to get all of the user info to display on user.html
     #3. renders the page with context variable passing needed data.
+    pass
+
+def delete_review(request):
     pass
 
 def logout(request):

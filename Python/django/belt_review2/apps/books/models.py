@@ -106,14 +106,17 @@ class ReviewManager(models.Manager):
             return(True, new_review, add_book[1].title, add_author[1].author_name)
 
     def recent_review(self):
-        reviews = self.order_by('-updated_at').filter(book__title).get(user__first_name)[:3]
+        reviews = self.order_by('-updated_at').filter(book__title).get(user__user_name)[:3]
         print reviews
         return(reviews)
 
     def book_all_reviews(self, b_id):
-        reviews = self.get(book=b_id).order_by('-updated_at').get(user__first_name)
+        reviews = self.order_by('-updated_at').get(book=b_id) #.get(user__user_name)
         print reviews
         return(reviews)
+
+    def destroy_review(self, r_id):
+        pass
 
 class Review(models.Model):
     user = models.ForeignKey(User)

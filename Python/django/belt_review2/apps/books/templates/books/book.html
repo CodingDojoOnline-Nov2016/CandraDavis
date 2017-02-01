@@ -15,45 +15,38 @@
         </ul>
       </div>
     </nav>
-
-    <h3>view_book.title</h3>
-    <p>view_book.author</p>
+    {{ book_reviews }}
+    <h3>book_reviews.book.title</h3>
+    <p>book_reviews.author.author_name</p>
 
     <div class="reviews-side">
       <h3>Reviews: </h3>
-      &&&&&& for loop with 3 most recent reviews &&&&&
-      ***** book dict query info ****
-      <p>****rating****</p>
-      <p>***** user name **** </p> <p>***** review **** </p>
-      <p>****** date posted *****</p>
-      <a href="#">***** user can delete their OWN reviews only *******</a>
+      {% for review in book_reviews%}
+        <p>{{ review.rating }}</p>
+        <p>{{ review.user.user_name }}</p> <p>{{ review.comments }}</p>
+        <p>{{ review.review_at }}</p>
+        {% if review.user.user_name == request.session['user_name'] %}
+          <a href="{% url 'books:delete_review' %}"></a>
+        {% endif %}
+      {% endfor %}
       <br>
     </div>
 
-    <div class="row">
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea"></textarea>
-            <label for="textarea1">Add a Review:</label>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="input-field col s12">
-  <select>
-    <option value="" disabled selected>Choose your option</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-  <label>Rating in Stars</label>
-</div>
-<button class="btn waves-effect waves-light" type="submit" name="action">Submit Review
-  <i class="material-icons right">send</i>
-</button>
+    <form class="add_review" action="{% url 'books:new_review' 'b_id' %}" method="post">
+      <input type="hidden" name="add" value="new_review">
+      <input type="hidden" name="book_id" value="{{ book_reviews.id }}">
+      <label for="textarea1">Add a Review:</label>
+      <textarea id="textarea1" class="add_review"></textarea>
+      <select class="rating" name="rating">
+        <option  value="" disabled selected>Choose your option</option>
+        <option  value="1">1</option>
+        <option  value="2">2</option>
+        <option  value="3">3</option>
+        <option  value="4">4</option>
+        <option  value="5">5</option>
+      </select>
+      <input type="submit" name="submit" value="Submit Review">
+    </form>
 
   </body>
 </html>
