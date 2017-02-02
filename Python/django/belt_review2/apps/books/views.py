@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.urls import reverse
 
 
-from models import Author, Book, Review
+from .models import Author, Book, Review, User
 # Create your views here.
 def index(request):
     return redirect('login:index')
@@ -94,9 +94,11 @@ def new_review(request, b_id):
             messages.success(request, 'You have successfully added a new review.')
             #3. returns a 5 most recent reviews, updated with new review
             #4. return redirects to show_book with latest review
-            return redirect(reverse('books.show_book', kwargs={'b_id':b_id}))
+            return redirect(reverse('books.show_book')#, kwargs={'b_id':b_id})
+    else:
+        return redirect(reverse('books:show_book', kwargs={'b_id':b_id}))
 
-def user_reviews(request, u_id):
+def user_info(request, u_id):
     #1. queries Book & Review db's to get all of the books that have been reviewed by a user. uses request.session['user_id']
     #2. queries User db to get all of the user info to display on user.html
     #3. renders the page with context variable passing needed data.

@@ -164,11 +164,11 @@ class ReviewManager(models.Manager):
             return(False, errors)
         else:
             print b_id, '<-------------------book_id'
-            book = Book.objects.get(pk=b_id)
+            book = Book.objects.get(id=b_id)
             user = User.objects.get(pk=u_id)
             rating = data['rating']
             comments = data['comments']
-            self.create(book=book, user=user, rating=rating, comments=comments)
+            Review.objects.create(book=book, user=user, rating=rating, comments=comments)
             updated_review = self.recent_review()
             return(True, updated_review)
 

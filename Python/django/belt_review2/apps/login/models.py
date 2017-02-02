@@ -8,26 +8,26 @@ EMAIL_REGEX = re.compile(r'^[a-zA-z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 
 # Create your models here.
 class UserManager(models.Manager):
-    def new_user(self, request):
+    def new_user(self, data):
         errors = []
-        data = request.POST
+
         print data
         print '9'*50
 
         if len(data['first_name']) < 2:
             errors.append('Please enter a valid First Name')
-        elif not data['first_name'].isalpha():
-            errors.append('Please enter a valid First Name')
+        # elif not data['first_name'].isalpha():
+        #     errors.append('Please enter a valid First Name')
 
         if len(data['last_name']) < 2:
             errors.append('Please enter a valid Last Name')
-        elif not data['last_name'].isalpha():
-            errors.append('Please enter a valid Last Name')
+        # elif not data['last_name'].isalpha():
+        #     errors.append('Please enter a valid Last Name')
 
         if len(data['user_name']) < 2:
             errors.append('Please enter a valid Last Name')
-        elif not data['user_name'].isalpha():
-            errors.append('Please enter a valid Last Name')
+        # elif not data['user_name'].isalpha():
+        #     errors.append('Please enter a valid Last Name')
 
 
         if len(data['email']) < 1:
@@ -58,6 +58,8 @@ class UserManager(models.Manager):
             pw_hash = bcrypt.hashpw(pw_confirm, bcrypt.gensalt())
             u = User.objects.create(first_name=first_name, last_name=last_name, user_name=user_name, email=email, pw_hash=pw_hash)
             u.save()
+            print '()'*75
+            print u
             return(True, u)
 
     def login(self, request):
