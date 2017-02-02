@@ -31,27 +31,31 @@
     </div>
 
     {{ book_reviews }}
-    <h3>book_reviews.book.title</h3>
-    <p>book_reviews.author.author_name</p>
+    <h3>{{book.title}}</h3>
+    <h5>{{book.author.author_name}}</h5>
+    <p>{{ book.id }}</p>
 
     <div class="reviews-side">
-      <h3>Reviews: </h3>
+      <h3>Reviews: </h3><hr>
       {% for review in book_reviews%}
-        <p>{{ review.rating }}</p><br>
-        <a class="button" href="{% url 'books:user_reviews' 'u_id' %}">{{ review.user.user_name }}</a>
+        <p>Review: {{ review.rating }} out of 5!</p><br>
+        <a href="{% url 'books:user_reviews' u_id %}">{{ review.user.user_name }}</a>
+        <p>{{ review.book.title }}</p>
         <p>{{ review.comments }}</p><br>
-        <p>{{ review.review_at }}</p>
+        <p>{{ review.created_at }}</p>
         {% if review.user.user_name == user_name %}
           <a href="{% url 'books:delete_review' %}"></a>
         {% endif %}
       {% endfor %}
       <br>
+      <hr>
     </div>
 
-    <form class="add_review" action="{% url 'books:new_review' book_review.id %}" method="post">
-      <input type="hidden" name="b_id" value="{{ book_reviews.id }}">
+    <form class="add_review" action="{% url 'books:new_review' book.id %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="b_id" value="{{ book.id }}">
       <label for="textarea1">Add a Review:</label>
-      <textarea id="textarea1" name="review" class="add_review"></textarea>
+      <textarea id="textarea1" name="comments" class="add_review"></textarea>
       <select class="rating" name="rating">
         <option  value="" disabled selected>Choose your option</option>
         <option  value="1">1</option>

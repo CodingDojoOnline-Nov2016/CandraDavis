@@ -135,18 +135,21 @@ class ReviewManager(models.Manager):
 
     def book_all_reviews(self, b_id):
         try:
-            reviews = self.order_by('-updated_at').get(book=b_id) #.get(user__user_name)
+            reviews = self.order_by('-updated_at').filter(book=b_id) #.get(user__user_name)
             print reviews
             return(reviews)
         except Review.DoesNotExist:
             pass
 
-    def add_new_review(self, data, ):
+    def add_new_review(self, data):
         errors = []
+        print '%' *50
+        print data
+        print '@'*50
         if len(data['comments'])<2:
             errors.append('Please enter your review')
-        elif not data['review'].isalpha():
-            errors.append('Please enter a valid format for your review')
+        # elif not data['review'].isalpha():
+        #     errors.append('Please enter a valid format for your review')
         else:
             pass
         if int(data['rating'])<1:
@@ -157,7 +160,9 @@ class ReviewManager(models.Manager):
         if errors:
             return(False, errors)
         else:
-            book = Book.get(id=data['b_id'])
+            print data['b_id'], '<-------------------book_id'
+            b_id = int(data['b_id'])
+            book = Book.objects.get(id=b_id)
             user = request.session['u_id']
             rating = data['rating']
             comments = data['comments']

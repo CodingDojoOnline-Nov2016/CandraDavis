@@ -59,21 +59,24 @@ def create(request):
 def show_book(request, b_id):
     #1. query review db to pull ALL reviews associated with book.id
     #2. return 3 most recent reviews in a review object to be listed on page
-    # book_reviews = Review.objects.book_all_reviews(b_id)#[:5]
-    book_reviews = Review.objects.filter(book=b_id)
+    book_reviews = Review.objects.order_by('-created_at').filter(id=b_id)# this shows all of the reviews!!#[:5]
+    # book_reviews = Review.objects.filter(id=b_id)
     print book_reviews, '<-----------------review'
     print b_id, '<------------b_id'
     #3. can post a review on the page, that redirects to the new_review method
+    book = Book.objects.get(pk=b_id)
     context = {
         'book_reviews': book_reviews,
         'u_id': request.session['u_id'],
         'user_name': request.session['user_name'],
-        'b_id': b_id
+        'b_id': b_id,
+        'book': book,
     }
     return render(request, 'books/book.html', context)
 
 def new_review(request, b_id):
     if request.method == 'POST':
+        print 'I am in the new_review method!!!!!!!!!'
         print request.POST
         #1. runs validations on the review
         #2. inserts new review into db
