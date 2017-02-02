@@ -10,27 +10,27 @@ def index(request):
 
 def show(request):
     #show book homepage with list of 3 most recently reviewed books and a list of other reviewed books with links.
-    # try:
-    #     reviews = Review.objects.order_by('-updated_at')#[:3]
-    #     print reviews
-    #     reviewed_books = Book.objects.all()
-    #     print reviewed_books
-    # except TemplateDoesNotExist:
-    #     pass
-    #
-    # context = {
-    #     'recent_reviews': reviews,
-    #     'reviewed_books': reviewed_books,
-    #     # 'user_name': request.session['user_name']
-    #     }
-    return render(request, 'books/index.html')# context
+    try:
+        reviews = Review.objects.order_by('-updated_at')[:5]
+        print reviews
+        reviewed_books = Book.objects.all()
+        print reviewed_books
+    except TemplateDoesNotExist:
+        pass
+
+    context = {
+        'reviews': reviews,
+        'reviewed_books': reviewed_books,
+        # 'user_name': request.session['user_name']
+        }
+    return render(request, 'books/index.html', context)# context
 
 def new_book(request):
     #called when clicking "add book review" from homepage. returns add_book_review.html with author_name list
-    # context = {
-    #     'authors':Author.objects.filter(author_name),
-    # }
-    return render(request, 'books/add_book_review.html') #, context
+    context = {
+        'authors':Author.objects.all(),
+    }
+    return render(request, 'books/add_book_review.html', context)
 
 def create(request):
     #1. processes post request.
@@ -64,7 +64,8 @@ def show_book(request, b_id):
     print book_reviews, '<-----------------review'
     print b_id, '<------------b_id'
     #3. can post a review on the page, that redirects to the new_review method
-    book = Book.objects.get(pk=b_id)
+    # try:
+    book = Book.objects.filter(id=b_id)
     context = {
         'book_reviews': book_reviews,
         'u_id': request.session['u_id'],
@@ -72,6 +73,8 @@ def show_book(request, b_id):
         'b_id': b_id,
         'book': book,
     }
+    # except Book.DoesNotExist:
+    #     pass
     return render(request, 'books/book.html', context)
 
 def new_review(request, b_id):
@@ -80,12 +83,13 @@ def new_review(request, b_id):
         print request.POST
         #1. runs validations on the review
         #2. inserts new review into db
-        add_review = Review.objects.add_new_review(request.POST)
+        u_id = request.session['u_id']
+        add_review = Review.objects.add_new_review(request.POST, b_id, u_id)
         print add_review
         print '&'*75
         if add_review[0] == False:
             messages.error(request, add_review[1])
-            return redirect('books.show_book', kwargs={'b_id':b_id})
+            return redirect(reverse('books.show_book', kwargs={'b_id':b_id}))
         else:
             messages.success(request, 'You have successfully added a new review.')
             #3. returns a 5 most recent reviews, updated with new review
