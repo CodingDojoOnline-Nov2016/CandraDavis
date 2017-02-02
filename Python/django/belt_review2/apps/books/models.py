@@ -146,11 +146,14 @@ class ReviewManager(models.Manager):
         print '%' *50
         print data
         print '@'*50
-        if len(data['comments'])<2:
-            errors.append('Please enter your review')
+        try:
+            if len(data['comments'])<2:
+                errors.append('Please enter your review')
         # elif not data['review'].isalpha():
         #     errors.append('Please enter a valid format for your review')
-        else:
+            else:
+                pass
+        except:
             pass
         if int(data['rating'])<1:
             errors.append('Please enter your rating')
