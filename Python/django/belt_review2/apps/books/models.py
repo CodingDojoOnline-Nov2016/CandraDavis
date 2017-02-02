@@ -134,11 +134,14 @@ class ReviewManager(models.Manager):
         return(reviews)#, user
 
     def book_all_reviews(self, b_id):
-        reviews = self.order_by('-updated_at').get(book=b_id) #.get(user__user_name)
-        print reviews
-        return(reviews)
+        try:
+            reviews = self.order_by('-updated_at').get(book=b_id) #.get(user__user_name)
+            print reviews
+            return(reviews)
+        except Review.DoesNotExist:
+            pass
 
-    def add_new_review(self, data):
+    def add_new_review(self, data, ):
         errors = []
         if len(data['comments'])<2:
             errors.append('Please enter your review')

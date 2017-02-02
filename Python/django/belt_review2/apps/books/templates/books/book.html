@@ -16,7 +16,7 @@
     <nav>
         <h4> {{ request.session.user_name }}</h4>
         <ul>
-          <li><a class="button" href="{% ur 'books:homepage' %}">Home</a></li>
+          <li><a class="button" href="{% url 'books:homepage' %}">Home</a></li>
           <li><a class="button button-primary" href="{% url 'books:logout' %}">Logout</a></li>
         </ul>
       </div>
@@ -38,17 +38,17 @@
       <h3>Reviews: </h3>
       {% for review in book_reviews%}
         <p>{{ review.rating }}</p><br>
-        <a class="button" href="{% url 'books:user_reviews' kwargs={'u_id':request.session['id']} %}">{{ review.user.user_name }}</a>
+        <a class="button" href="{% url 'books:user_reviews' 'u_id' %}">{{ review.user.user_name }}</a>
         <p>{{ review.comments }}</p><br>
         <p>{{ review.review_at }}</p>
-        {% if review.user.user_name == request.session['user_name'] %}
+        {% if review.user.user_name == user_name %}
           <a href="{% url 'books:delete_review' %}"></a>
         {% endif %}
       {% endfor %}
       <br>
     </div>
 
-    <form class="add_review" action="{% url 'books:new_review' %}" method="post">
+    <form class="add_review" action="{% url 'books:new_review' book_review.id %}" method="post">
       <input type="hidden" name="b_id" value="{{ book_reviews.id }}">
       <label for="textarea1">Add a Review:</label>
       <textarea id="textarea1" name="review" class="add_review"></textarea>

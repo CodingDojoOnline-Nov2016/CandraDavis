@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.urls import reverse
+
 
 from models import Author, Book, Review
 # Create your views here.
@@ -52,16 +54,21 @@ def create(request):
             context = {
                 'book': book_review_info,
             }
-            return redirect('books:show_book', kwargs={'b_id':b_id})
+            return redirect(reverse('books:show_book', kwargs={'b_id':b_id}))
 
 def show_book(request, b_id):
     #1. query review db to pull ALL reviews associated with book.id
     #2. return 3 most recent reviews in a review object to be listed on page
-    book_reviews = Review.objects.book_all_reviews(b_id)[:5]
-    print book_reviews
+    # book_reviews = Review.objects.book_all_reviews(b_id)#[:5]
+    book_reviews = Review.objects.filter(book=b_id)
+    print book_reviews, '<-----------------review'
+    print b_id, '<------------b_id'
     #3. can post a review on the page, that redirects to the new_review method
     context = {
         'book_reviews': book_reviews,
+        'u_id': request.session['u_id'],
+        'user_name': request.session['user_name'],
+        'b_id': b_id
     }
     return render(request, 'books/book.html', context)
 
@@ -71,6 +78,8 @@ def new_review(request, b_id):
         #1. runs validations on the review
         #2. inserts new review into db
         add_review = Review.objects.add_new_review(request.POST)
+        print add_review
+        print '&'*75
         if add_review[0] == False:
             messages.error(request, add_review[1])
             return redirect('books.show_book', kwargs={'b_id':b_id})
@@ -78,7 +87,7 @@ def new_review(request, b_id):
             messages.success(request, 'You have successfully added a new review.')
             #3. returns a 5 most recent reviews, updated with new review
             #4. return redirects to show_book with latest review
-            return redirect('books.show_book', kwargs={'b_id':b_id})
+            return redirect(reverse('books.show_book', kwargs={'b_id':b_id}))
 
 def user_reviews(request, u_id):
     #1. queries Book & Review db's to get all of the books that have been reviewed by a user. uses request.session['user_id']
