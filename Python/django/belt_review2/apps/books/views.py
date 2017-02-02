@@ -33,10 +33,15 @@ def new_book(request):
 def create(request):
     #1. processes post request.
     if request.method == 'POST':
+        print '^'*50
+        print request.POST
     #2. Adds title, author, user id to Book db after validations
     #3. Adds review, rating, user id, book id to Review db after validations
         u_id = request.session['u_id']
+        print '@'*75
+        print u_id
         book_review_info = Review.objects.valid_review(request.POST, u_id)
+        print book_review_info
     #4. returns book object to redirect to show_book
         if book_review_info[0] == False:
             messages.error(request, book_review_info[1])
