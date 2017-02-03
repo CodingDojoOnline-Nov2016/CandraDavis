@@ -15,20 +15,20 @@
   <body>
     <nav>
         <ul>
-          <li><a class="button" href="{% ur 'books:homepage' %}">Home</a></li>
+          <li><a class="button" href="{% url 'books:homepage' %}">Home</a></li>
           <li class='nav-button'><a class='button' href="{% url 'books:new_book' %}">Add Book and Review</a></li>
           <li><a class="button button-primary" href="{% url 'books:logout' %}">Logout</a></li>
         </ul>
     </nav>
 
     <h4>User Alias: {{ request.session.user_name }}</h4>
-    <h5>Name: {{ name.first_name }} {{ name.last_name }}</h5>
-    <h5>Email: {{ name.email }}</h5>
+    <h5>Name: {{ user.first_name }} {{ user.last_name }}</h5>
+    <h5>Email: {{ user.email }}</h5>
     <h5>Total Reviews: {{ total_reviews }}</h5>
 
     <h4>Posted Reviews on the Following Books: </h4>
-    {% for book in books %}
-      <a href="{% url 'books:show_book' kwargs={b_id: book.id} %}">{{ book.title }}</a>
+    {% for a_book in book %}
+      <a href="{% url 'books:show_book' a_book.id %}">{{ a_book.title }}</a>
     {% endfor %}
   </body>
 </html>

@@ -18,15 +18,12 @@ class AuthorManager(models.Manager):
             if errors:
                 return(False, errors)
             else:
-                author_name = data
-                author = self.create(author_name=author_name)
-                return(True, author)
-            # try:
-            #     author = self.get[author_name=data['author_name']]
-            # except:
-            #     author_name = data['author_name']
-            #     author = self.create(author_name=author_name)
-
+                try:
+                    author = self.get(author_name=data)
+                except KeyError:
+                    author_name = data
+                    author = self.create(author_name=author_name)
+                    return(True, author)
 
 class Author(models.Model):
     author_name = models.CharField(max_length=45)
@@ -43,8 +40,8 @@ class BookManager(models.Manager):
         #have to check how to do .isalpha validations on unicode strings in django
         # elif not data['title'].isalpha():
         #     errors.append('Please enter a valid Book Title')
-        # elif data['title'] == Book.objects.get(title=data['title']):
-        #     errors.append('Title already exists. Please select book title from homepage to submit a new review')
+        elif data['title'] == Book.objects.get(title=data['title']):
+            errors.append('Title already exists. Please select book title from homepage to submit a new review')
         else:
             if errors:
                 return(False, errors)
@@ -164,7 +161,7 @@ class ReviewManager(models.Manager):
             return(False, errors)
         else:
             print b_id, '<-------------------book_id'
-            book = Book.objects.get(id=b_id)
+            book = Book.objects.get(pk=int(b_id))
             user = User.objects.get(pk=u_id)
             rating = data['rating']
             comments = data['comments']
