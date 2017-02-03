@@ -65,7 +65,7 @@
       {% for review in reviews %}
       <a href="{% url 'books:show_book' review.book.id %}">{{ review.book.title }}</a><br>
       <p>{{ review.rating }} out of 5 stars</p><br>
-      <a href="#">{{ review.user.user_name }}</a> <p>{{ review.comments }}</p> <br>
+      <a href="{% url 'books:user_info' review.user.id %}">{{ review.user.user_name }}</a> <p>{{ review.comments }}</p> <br>
       <a href="#">{{ review.updated_at }}</a>
       <hr>
       {% endfor %}

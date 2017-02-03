@@ -130,13 +130,13 @@ class ReviewManager(models.Manager):
         print reviews
         return(reviews)#, user
 
-    def book_all_reviews(self, b_id):
-        try:
-            reviews = self.order_by('-updated_at').filter(book=b_id) #.get(user__user_name)
-            print reviews
-            return(reviews)
-        except Review.DoesNotExist:
-            pass
+    # def book_all_reviews(self, b_id):
+    #     try:
+    #         reviews = self.order_by('-updated_at').filter(book=b_id) #.get(user__user_name)
+    #         print reviews
+    #         return(reviews)
+    #     except Review.DoesNotExist:
+    #         pass
 
     def add_new_review(self, data, b_id, u_id):
         errors = []
@@ -161,7 +161,7 @@ class ReviewManager(models.Manager):
             return(False, errors)
         else:
             print b_id, '<-------------------book_id'
-            book = Book.objects.get(pk=int(b_id))
+            book = Book.objects.get(id=b_id)
             user = User.objects.get(pk=u_id)
             rating = data['rating']
             comments = data['comments']

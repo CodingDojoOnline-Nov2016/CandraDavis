@@ -30,10 +30,9 @@
       {% endif %}
     </div>
 
-    {{ book_reviews }}
-    <h3>{{book.title}}</h3>
-    <h5>{{book.author.author_name}}</h5>
-    <p>{{ book.id }}</p>
+    <h3>{{book.0.title}}</h3>
+    <h5>{{book.0.author.author_name}}</h5>
+    <!-- <p>{{ book.0.id }}</p> -->
 
     <div class="reviews-side">
       <h3>Reviews: </h3><hr>

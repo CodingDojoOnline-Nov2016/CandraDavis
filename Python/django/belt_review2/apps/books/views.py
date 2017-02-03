@@ -67,6 +67,7 @@ def show_book(request, b_id):
     #3. can post a review on the page, that redirects to the new_review method
     # try:
     book = Book.objects.filter(id=b_id)
+    print book, '!'*15
     context = {
         'book_reviews': book_reviews,
         'u_id': request.session['u_id'],

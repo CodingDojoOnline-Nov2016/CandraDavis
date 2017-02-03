@@ -62,10 +62,10 @@ class UserManager(models.Manager):
             print u
             return(True, u)
 
-    def login(self, request):
+    def login(self, data):
         errors = []
-        pw = request.POST['password'].encode()
-        email = request.POST['email']
+        pw = data['password'].encode()
+        email = data['email']
 
         if len(email) < 1:
             errors.append('Please enter your email')

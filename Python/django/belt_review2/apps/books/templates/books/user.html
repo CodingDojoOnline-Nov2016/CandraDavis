@@ -28,7 +28,7 @@
 
     <h4>Posted Reviews on the Following Books: </h4>
     {% for a_book in book %}
-      <a href="{% url 'books:show_book' a_book.id %}">{{ a_book.title }}</a>
+      <h6><a href="{% url 'books:show_book' a_book.id %}">{{ a_book.title }}</a></h6>
     {% endfor %}
   </body>
 </html>
