@@ -2,7 +2,7 @@
 function blues(num){
   var b = ' boom'
   var c = ' chick'
-  for(i=1; i<= num; i++){
+  for(var i=1; i<= num; i++){
     console.log(i + c + b + c);
   }
 }

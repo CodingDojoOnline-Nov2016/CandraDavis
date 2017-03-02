@@ -2,7 +2,7 @@
 // Example: factorial(3) = 6 (or 1 * 2 * 3); factorial(5) = 120 (or 1 * 2 * 3 * 4 * 5).
 function factorial(num){
   var factorial = 1
-  for(i=num; i>0; i-=1){
+  for(var i=num; i>0; i-=1){
     factorial *= i;
   }
   return factorial;

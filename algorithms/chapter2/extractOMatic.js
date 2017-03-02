@@ -6,8 +6,16 @@
 //
 
 function extractDigit(num, digitNum){
-  var factor = 10
-  if (digitNum === 0){
-    
+  var stringNum = num.toString();
+  console.log(stringNum);
+  console.log(stringNum.length);
+  for(var i = stringNum.length - 1; i>=0; i-= 1){
+    if(digitNum === i){
+      return console.log(stringNum[i])
+    }
+    else{
+      continue;
+    }
   }
 }
+extractDigit(1824,0);

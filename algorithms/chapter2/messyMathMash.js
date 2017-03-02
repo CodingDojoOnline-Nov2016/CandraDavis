@@ -6,7 +6,7 @@
 // Example: if given num is 4, return 7. If given num is 8, return 34. If given num is 15, return -1.
 function messyMath(num){
   var sum = 0;
-  for(i=0; i<= num; i++){
+  for(var i=0; i<= num; i++){
     if(i === num/3){
       sum = -1;
       return sum;
@@ -27,8 +27,4 @@ return sum;
 }
 messyMath(8)
 messyMath(15)
-// if(num/3 === i){
-//   return -1;
-// }
-//   else{
-// }
+messyMath(4)

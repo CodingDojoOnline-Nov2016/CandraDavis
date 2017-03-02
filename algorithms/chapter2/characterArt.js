@@ -5,7 +5,7 @@
 // drawLeftChars(num, char)
 function drawLeftChars(num, char){
   var textField = ''
-  for(i=0; i<=75; i++)
+  for(var i=0; i<=75; i++)
     if(num>0){
       textField += char
       num -=1
@@ -20,7 +20,7 @@ drawLeftChars(25, 'c')
 function drawRightChars(num, char){
   var textField = '';
   var blanks = 75 - num;
-  for(i=0; i<=75; i+=1){
+  for(var i=0; i<=75; i+=1){
     if(blanks>0){
       textField += ' '
       blanks -=1;
@@ -37,7 +37,7 @@ drawRightChars(35, 'G');
 function drawCenterChar(num, char){
   var textField = ''
   var spaces = (75-num)/2
-  for(i=0; i<=75; i+=1){
+  for(var i=0; i<=75; i+=1){
     if(spaces>0){
       textField += ' '
       spaces -=1

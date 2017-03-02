@@ -5,7 +5,7 @@
 // - Write a function drawLeftStars(num) that accepts a number and prints that many asterisks
 function drawLeftStars(num){
   var textField = '';
-  for(i=0; i<=num; i++){
+  for(var i = 0; i <= num; i++){
       textField += '*';
   }
   console.log(textField);
@@ -15,12 +15,12 @@ drawLeftStars(23);
 // - Write a function drawRightStars(num) that prints 75 characters total. The stars should build from the right side. the last num characters should be asterisks; the other remaining of the 75 should be spaces.
 function drawRightStars(num){
   var textField = '';
-  for(i=0; i<=75; i++){
-    if(i<num){
+  for(var i = 0; i <= 75; i++){
+    if(i < num){
       textField += ' ';
     }
-    else if(i>=num){
-      textField +="*";
+    else if(i >= num){
+      textField += "*";
     }
   }
   console.log(textField);
@@ -30,15 +30,15 @@ drawRightStars(45);
 // - Write a function drawCenterStars(num) that prints 75 characters total. The stars should be centered in the 75. the middle num characters should be asterisks; the rest of the 75 characters should be spaces.
 function drawCenterStars(num){
   var textField = ''
-  var spaces = (75-num)/2
-  for(i=0; i<=75; i++){
-    if(spaces>0){
+  var spaces = (75 - num)/2
+  for(var i = 0; i <= 75; i++){
+    if(spaces > 0){
         textField += ' '
-        spaces -=1;
+        spaces -= 1;
       }
-      else if(num>0) {
+      else if(num > 0) {
         textField += '*'
-        num -=1;
+        num -= 1;
       }
       else{
         textField += ' '

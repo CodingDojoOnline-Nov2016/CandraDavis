@@ -3,24 +3,24 @@
 // Examples: fibonacci(0) = 0 (given), fibonacci(1) = 1 (given), fibonacci(2) = 1 (fib(0)+fib(1), or 0+1), fibonacci(3) = 2 (fib(1)+fib(2), or 1+1), fibonacci(4) = 3 (1+2), fibonacci(5) = 5 (2+3), fibonacci(6) = 8 (3+5), fibonacci(7) = 13 (5+8), etc.
 
 function fibonacci(num){
-  var start = 0
-  var fib = 1
-  var temp = 0
+  var start = 0;
+  var fib = 1;
+  var temp = 0;
   if (num === 0){
-    return 0
+    return 0;
   }
   else if (num === 1) {
-    return num
+    return num;
   }
   else{
     while(num >= 0){
-    temp = start
-    start = start + fib
-    fib = temp
-    num -= 1
+    temp = start;
+    start = start + fib;
+    fib = temp;
+    num -= 1;
     }
   }
-  return fib
+  return fib;
 }
 fibonacci(7);
 fibonacci(6);
